@@ -13,7 +13,9 @@ function BottomNavigation() {
     <nav>
       <Navigation>
         {NAV_MENU.map((nav) => (
-          <NavStyle to={nav.link}>{nav.title}</NavStyle>
+          <NavStyle to={nav.link} key={nav.title}>
+            {nav.title}
+          </NavStyle>
         ))}
       </Navigation>
     </nav>
