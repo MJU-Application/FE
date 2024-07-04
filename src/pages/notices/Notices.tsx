@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Article from "./components/Article";
 import SearchBar from "./components/SearchBar";
 import Menu from "./components/Menu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Notices() {
   const [menu, setMenu] = useState<string>("일반");
@@ -43,7 +43,7 @@ function Notices() {
       id: 5,
     },
   ];
-  useEffect(() => {}, [menu]);
+
   return (
     <>
       <SearchBar />

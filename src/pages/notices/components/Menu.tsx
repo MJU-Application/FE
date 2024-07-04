@@ -7,6 +7,7 @@ type MenuProps = {
 
 function Menu({ menu, setMenu }: MenuProps) {
   const MENU = ["일반", "학사", "장학/학자금", "취창업"];
+
   return (
     <MenuBar>
       {MENU.map((item) => (
