@@ -1,58 +1,26 @@
 import styled from "styled-components";
-import Article from "./components/Article";
-import SearchBar from "./components/SearchBar";
-import Menu from "./components/Menu";
+import Article from "@/pages/notices/components/Article";
 import { useState } from "react";
+import { useNotices } from "@/hooks/api/useNotices";
+import Menu from "@/pages/notices/components/Menu";
+import Header from "@/pages/notices/components/Header";
 
 function Notices() {
   const [menu, setMenu] = useState<string>("일반");
-  const NOTICES = [
-    {
-      title:
-        "[자연진로취업지원팀] 2024-1학기 온라인 모의 면접프로그램 참여 학생 모집",
-      link: "https://www.mju.ac.kr/bbs/mjukr/141/213267/artclView.do",
-      date: "07.04",
-      id: 1,
-    },
-    {
-      title:
-        "[자연진로취업지원팀] 2024-1학기 온라인 모의 면접프로그램 참여 학생 모집",
-      link: "https://www.mju.ac.kr/bbs/mjukr/141/213267/artclView.do",
-      date: "07.04",
-      id: 2,
-    },
-    {
-      title:
-        "[자연진로취업지원팀] 2024-1학기 온라인 모의 면접프로그램 참여 학생 모집",
-      link: "https://www.mju.ac.kr/bbs/mjukr/141/213267/artclView.do",
-      date: "07.04",
-      id: 3,
-    },
-    {
-      title:
-        "[자연진로취업지원팀] 2024-1학기 온라인 모의 면접프로그램 참여 학생 모집",
-      link: "https://www.mju.ac.kr/bbs/mjukr/141/213267/artclView.do",
-      date: "07.04",
-      id: 4,
-    },
-    {
-      title:
-        "[자연진로취업지원팀] 2024-1학기 온라인 모의 면접프로그램 참여 학생 모집",
-      link: "https://www.mju.ac.kr/bbs/mjukr/141/213267/artclView.do",
-      date: "07.04",
-      id: 5,
-    },
-  ];
+  const { data } = useNotices();
+  console.log(data);
 
   return (
     <>
-      <SearchBar />
-      <Menu menu={menu} setMenu={setMenu} />
+      <TopNavigation>
+        <Header />
+        <Menu menu={menu} setMenu={setMenu}></Menu>
+      </TopNavigation>
       <NoticeWrapper>
-        {NOTICES.map((notice) => (
+        {data?.data?.map((notice) => (
           <Article
             title={notice.title}
-            date={notice.date}
+            date={notice.createdAt}
             link={notice.link}
             key={notice.id}
           />
@@ -63,9 +31,17 @@ function Notices() {
 }
 
 export default Notices;
+
+const TopNavigation = styled.div`
+  position: fixed;
+  width: 100%;
+  max-width: 480px;
+  background-color: #fff;
+`;
+
 const NoticeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px;
+  padding: 11rem 16px;
 `;
