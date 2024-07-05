@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Article from "@/pages/notices/components/Article";
+import NotcieCard from "@/pages/notices/components/NoticeCard";
 import { useState } from "react";
 import { useNotices } from "@/hooks/api/useNotices";
 import Menu from "@/pages/notices/components/Menu";
@@ -18,7 +18,7 @@ function Notices() {
       </TopNavigation>
       <NoticeWrapper>
         {data?.data?.map((notice) => (
-          <Article
+          <NotcieCard
             title={notice.title}
             date={notice.createdAt}
             link={notice.link}
