@@ -1,14 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
-
+import { NAV_MENU } from "@/constants/navigation";
 function BottomNavigation() {
-  const NAV_MENU = [
-    { title: "홈", link: "/", icon: "" },
-    { title: "공지", link: "/notice", icon: "" },
-    { title: "일정", link: "/schedule", icon: "" },
-    { title: "식단", link: "/meal", icon: "" },
-    { title: "설정", link: "/setting", icon: "" },
-  ];
+  const location = useLocation();
+  if (location.pathname === "/notice/search") {
+    return null;
+  }
   return (
     <nav>
       <Navigation>
