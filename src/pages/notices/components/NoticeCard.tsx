@@ -19,6 +19,7 @@ function NotcieCard({ title, date, link }: NotcieCardProps) {
 
 const Notice = styled.div`
   height: 120px;
+  max-width: 45rem;
   border-radius: 12px;
   background: #fff;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
