@@ -1,23 +1,29 @@
 import { NOTICE } from "@/constants/notice";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-type MenuProps = {
-  menu: string;
-  setMenu: React.Dispatch<React.SetStateAction<string>>;
-};
+function Menu() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  useEffect(() => {
+    if (!category) {
+      searchParams.set("category", encodeURIComponent("ILLBAN"));
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, category]);
 
-function Menu({ menu, setMenu }: MenuProps) {
-  const navigate = useNavigate();
   return (
     <MenuBar>
       {NOTICE.map((notice) => (
         <div
-          className={`menu ${menu === notice.name ? "activate" : "inactivate"}`}
+          className={`menu ${
+            category === notice.query ? "activate" : "inactivate"
+          }`}
           key={notice.name}
           onClick={() => {
-            setMenu(notice.name);
-            navigate(`/notice${notice.query}`);
+            searchParams.set("category", encodeURIComponent(notice.query));
+            setSearchParams(searchParams);
           }}
         >
           {notice.name}
