@@ -1,26 +1,27 @@
 import styled from "styled-components";
 import NotcieCard from "@/pages/notices/components/NoticeCard";
-import { useState } from "react";
 import { useNotices } from "@/hooks/api/useNotices";
 import Menu from "@/pages/notices/components/Menu";
 import Header from "@/pages/notices/components/Header";
+import { useSearchParams } from "react-router-dom";
 
 function Notices() {
-  const [menu, setMenu] = useState<string>("일반");
-  const { data } = useNotices();
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+  const { data } = useNotices(category);
   console.log(data);
-
+  console.log(category);
   return (
     <>
       <TopNavigation>
         <Header />
-        <Menu menu={menu} setMenu={setMenu}></Menu>
+        <Menu />
       </TopNavigation>
       <NoticeWrapper>
         {data?.data?.map((notice) => (
           <NotcieCard
             title={notice.title}
-            date={notice.createdAt}
+            date={notice.noticedAt}
             link={notice.link}
             key={notice.id}
           />
@@ -42,6 +43,5 @@ const TopNavigation = styled.div`
 const NoticeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 11rem 16px;
+  padding: 11rem 1.2rem;
 `;
