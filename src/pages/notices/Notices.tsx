@@ -4,21 +4,29 @@ import { useNotices } from "@/hooks/api/useNotices";
 import Menu from "@/pages/notices/components/Menu";
 import Header from "@/pages/notices/components/Header";
 import { useSearchParams } from "react-router-dom";
+import { Notice } from "@/api/Notice";
+import { useEffect } from "react";
 
 function Notices() {
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("category");
-  const { data } = useNotices(category);
-  console.log(data);
-  console.log(category);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const type = searchParams.get("type");
+  const { data } = useNotices(type);
+
+  useEffect(() => {
+    if (!type) {
+      searchParams.set("type", encodeURIComponent("ILLBAN"));
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, type]);
+
   return (
     <>
       <TopNavigation>
         <Header />
-        <Menu />
+        <Menu type={type} />
       </TopNavigation>
       <NoticeWrapper>
-        {data?.data?.map((notice) => (
+        {data.data.map((notice: Notice) => (
           <NotcieCard
             title={notice.title}
             date={notice.noticedAt}
