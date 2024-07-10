@@ -2,7 +2,7 @@
   "notice": [
     {
       "id": 1,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 1,
       "title": "[교직]2024년 8월 졸업예정자 교원자격 무시험검정원서 접수 안내",
       "writer": "명지대 학사",
@@ -12,7 +12,7 @@
     },
     {
       "id": 2,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 2,
       "title": "2024학년도 2학기 학점교류 신청 안내",
       "writer": "명지대 학사",
@@ -22,7 +22,7 @@
     },
     {
       "id": 3,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 3,
       "title": "2024학년도 2학기 다전공(부,복수,융합전공) 신청원서 및 포기원서 제출 안내",
       "writer": "명지대 학사",
@@ -32,7 +32,7 @@
     },
     {
       "id": 4,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 4,
       "title": "2024학년도 2학기 재입학 신청 안내",
       "writer": "명지대 학사",
@@ -42,7 +42,7 @@
     },
     {
       "id": 5,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 5,
       "title": "2024-2 휴ㆍ복학 신청 안내",
       "writer": "명지대 학사",
@@ -52,7 +52,7 @@
     },
     {
       "id": 6,
-      "category": "HAKSA",
+      "type": "HAKSA",
       "notice_no": 6,
       "title": "검색용",
       "writer": "명지대 학사",
@@ -62,7 +62,7 @@
     },
     {
       "id": 7,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 1,
       "title": "2024학년도 2학기 진로탐색활동학점제(커스텀 커리어 프로젝트) 참가자 모집",
       "writer": "명지대 학사",
@@ -72,7 +72,7 @@
     },
     {
       "id": 8,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 2,
       "title": "김해분청도자박물관 이병권교수 초대전 - 달과 사발 (부제: 黑, 달을 품다) 새글",
       "writer": "명지대 학사",
@@ -82,7 +82,7 @@
     },
     {
       "id": 9,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 3,
       "title": "2024학년도 후기 전문·특수대학원 신(편)입생 수시2차 모집 안내 ",
       "writer": "명지대 학사",
@@ -92,7 +92,7 @@
     },
     {
       "id": 10,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 4,
       "title": "국제교류학생클럽(어우라미) 25기 회원 모집 새글",
       "writer": "명지대 학사",
@@ -102,7 +102,7 @@
     },
     {
       "id": 11,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 5,
       "title": "2024학년도 하계방학 인문캠퍼스 도서관 대학사료실 실습장학생 모집 안내 새글",
       "writer": "명지대 학사",
@@ -112,7 +112,7 @@
     },
     {
       "id": 12,
-      "category": "ILLBAN",
+      "type": "ILLBAN",
       "notice_no": 6,
       "title": "2024학년도 1학기 학사경고자 학습지원 프로그램 안내 새글",
       "writer": "명지대 학사",
@@ -122,7 +122,7 @@
     },
     {
       "id": 13,
-      "category": "JANGHAK",
+      "type": "JANGHAK",
       "notice_no": 6,
       "title": "2024년 상반기 발생 울산광역시 대학(원)생 학자금대출 이자지원사업 안내 공고",
       "writer": "명지대 학사",
@@ -132,7 +132,7 @@
     },
     {
       "id": 14,
-      "category": "JANGHAK",
+      "type": "JANGHAK",
       "notice_no": 6,
       "title": "2024년 하반기 경기도 대학생 학자금 대출이자 지원 공고",
       "writer": "명지대 학사",
@@ -142,7 +142,7 @@
     },
     {
       "id": 15,
-      "category": "JANGHAK",
+      "type": "JANGHAK",
       "notice_no": 6,
       "title": "2024년 하반기 인천시 대학(원)생 학자금대출 이자지원 안내",
       "writer": "명지대 학사",
@@ -152,7 +152,7 @@
     },
     {
       "id": 16,
-      "category": "JANGHAK",
+      "type": "JANGHAK",
       "notice_no": 6,
       "title": "2024년 2학기 삼성드림클래스 대학생멘토 선발 홍보",
       "writer": "명지대 학사",
@@ -162,7 +162,7 @@
     },
     {
       "id": 17,
-      "category": "JOB",
+      "type": "JOB",
       "notice_no": 6,
       "title": "[KOTRA] 2024 GLOBAL TALENT FAIR 구직자 모집 ",
       "writer": "명지대 학사",
@@ -172,7 +172,7 @@
     },
     {
       "id": 18,
-      "category": "JOB",
+      "type": "JOB",
       "notice_no": 6,
       "title": "[고려사이버대] 매치업(Match業) 빅데이터실무전문가 과정 수강 안내",
       "writer": "명지대 학사",
@@ -182,7 +182,7 @@
     },
     {
       "id": 19,
-      "category": "JOB",
+      "type": "JOB",
       "notice_no": 6,
       "title": "서울권역 대학일자리센터 '24년 기업탐방형 일경험 프로그램 참여모집",
       "writer": "명지대 학사",
@@ -192,7 +192,7 @@
     },
     {
       "id": 20,
-      "category": "JOB",
+      "type": "JOB",
       "notice_no": 6,
       "title": "[시립마포청소년센터] 미디어 리터러시 강사양성과정 참여자 모집 안내",
       "writer": "명지대 학사",
@@ -200,5 +200,45 @@
       "veiws": 0,
       "link": "https://www.mju.ac.kr/bbs/mjukr/146/213272/artclView.do"
     }
-  ]
+  ],
+  "schedule": {
+    "id": 1,
+    "year": 2024,
+    "month": 6,
+    "schedule": [
+      {
+        "period": ".06 .10 ~ .06 .14",
+        "contents": "[학부·대학원] 기말고사 기간"
+      },
+      {
+        "period": ".06 .10 ~ .06 .21",
+        "contents": "[학부·대학원] 최종 성적입력 기간"
+      },
+      {
+        "period": ".06 .14 ~ .06 .14",
+        "contents": "[대학원] 석사·박사학위 청구논문 심사결과 제출마감"
+      }
+    ]
+  },
+  "menu": {
+    "id": 1,
+    "date": "2024-06-30",
+    "day": "월요일",
+    "cafeteria": "myungjindang",
+    "campus": "nature",
+    "menu": [
+      {
+        "category": "조식",
+        "food": ["콩밥", "킴치", "단무지", "똥국"]
+      },
+      {
+        "category": "중식",
+        "food": ["콩밥", "킴치", "단무지", "똥국"]
+      },
+      {
+        "category": "석식",
+        "food": ["콩밥", "킴치", "단무지", "똥국"]
+      }
+    ]
+  }
 }
