@@ -1,14 +1,16 @@
 import { NoticeResponse, searchNotice } from "@/api/Notice";
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import {
+  useSuspenseQuery,
+  UseSuspenseQueryResult,
+} from "@tanstack/react-query";
 
 export function useSearchNotice(
   keyword: string | null
-): UseQueryResult<NoticeResponse, Error> {
+): UseSuspenseQueryResult<NoticeResponse, Error> {
   const QUERY_KEY = "Notice";
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [QUERY_KEY, keyword],
-    queryFn: () => searchNotice(keyword),
-    enabled: !!keyword,
+    queryFn: () => (keyword ? searchNotice(keyword) : null),
   });
 }
 
