@@ -1,4 +1,4 @@
-import { Notice } from "@/api/Notice";
+import { APINotice } from "@/types/notice";
 import NotcieCard from "@/pages/notices/components/NoticeCard";
 import styled from "styled-components";
 import { useSearchNotice } from "@/hooks/api/useSearchNotice";
@@ -8,7 +8,7 @@ function SearchResult({ keyword }: { keyword: string | null }) {
 
   return (
     <Result>
-      {data?.data.map((notice: Notice) => (
+      {data?.data.map((notice: APINotice) => (
         <NotcieCard
           key={notice.id}
           title={notice.title}
