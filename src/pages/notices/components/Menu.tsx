@@ -1,24 +1,23 @@
 import { NOTICE } from "@/constants/notice";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-type MenuProps = {
-  menu: string;
-  setMenu: React.Dispatch<React.SetStateAction<string>>;
-};
+function Menu({ type }: { type: string | null }) {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-function Menu({ menu, setMenu }: MenuProps) {
-  const navigate = useNavigate();
+  const handleCategoryChange = (newCategory: string) => {
+    searchParams.set("type", encodeURIComponent(newCategory));
+    setSearchParams(searchParams);
+  };
   return (
     <MenuBar>
       {NOTICE.map((notice) => (
         <div
-          className={`menu ${menu === notice.name ? "activate" : "inactivate"}`}
+          className={`menu ${
+            type === notice.query ? "activate" : "inactivate"
+          }`}
           key={notice.name}
-          onClick={() => {
-            setMenu(notice.name);
-            navigate(`/notice${notice.query}`);
-          }}
+          onClick={() => handleCategoryChange(notice.query)}
         >
           {notice.name}
         </div>

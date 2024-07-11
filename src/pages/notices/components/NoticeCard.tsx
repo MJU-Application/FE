@@ -10,25 +10,31 @@ function NotcieCard({ title, date, link }: NotcieCardProps) {
   return (
     <Link to={link}>
       <Notice>
-        <div className="title">{title}</div>
-        <div className="date">{date}</div>
+        <div className="content">
+          <div className="title">{title}</div>
+          <div className="date">{date}</div>
+        </div>
       </Notice>
     </Link>
   );
 }
 
 const Notice = styled.div`
-  height: 120px;
+  height: 90px;
+  max-width: 45rem;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: start;
-  padding: 3rem;
+  /* box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.05); */
+  padding: 1.5rem;
   margin: 1rem 0px;
   cursor: pointer;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+  }
 
   .title,
   .date {
@@ -38,12 +44,18 @@ const Notice = styled.div`
 
   .title {
     font-size: 1.4rem;
-    padding-bottom: 2rem;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .date {
     font-size: 1.1rem;
     color: #92929a;
+    margin-top: 0.5rem;
   }
 `;
 

@@ -1,26 +1,35 @@
 import styled from "styled-components";
 import NotcieCard from "@/pages/notices/components/NoticeCard";
-import { useState } from "react";
 import { useNotices } from "@/hooks/api/useNotices";
 import Menu from "@/pages/notices/components/Menu";
 import Header from "@/pages/notices/components/Header";
+import { useSearchParams } from "react-router-dom";
+import { Notice } from "@/api/Notice";
+import { useEffect } from "react";
 
 function Notices() {
-  const [menu, setMenu] = useState<string>("일반");
-  const { data } = useNotices();
-  console.log(data);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const type = searchParams.get("type");
+  const { data } = useNotices(type);
+
+  useEffect(() => {
+    if (!type) {
+      searchParams.set("type", encodeURIComponent("ILLBAN"));
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, type]);
 
   return (
     <>
       <TopNavigation>
         <Header />
-        <Menu menu={menu} setMenu={setMenu}></Menu>
+        <Menu type={type} />
       </TopNavigation>
       <NoticeWrapper>
-        {data?.data?.map((notice) => (
+        {data.data.map((notice: Notice) => (
           <NotcieCard
             title={notice.title}
-            date={notice.createdAt}
+            date={notice.noticedAt}
             link={notice.link}
             key={notice.id}
           />
@@ -42,6 +51,5 @@ const TopNavigation = styled.div`
 const NoticeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 11rem 16px;
+  padding: 11rem 1.2rem;
 `;
