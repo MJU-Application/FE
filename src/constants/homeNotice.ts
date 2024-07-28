@@ -4,4 +4,6 @@ const HOMENOTICE = [
   { name: "진로/취업/창업 공지", query: "JINLO" },
 ];
 
-export { HOMENOTICE };
+const MEALOPTIONS = ["명진당", "학생식당", "생활관"];
+
+export { HOMENOTICE, MEALOPTIONS };

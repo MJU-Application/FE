@@ -7,6 +7,7 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useNotices } from "@/hooks/api/useNotices";
 import HomeNoticeCard from "./components/HomeNoticeCard";
+import MealCard from "../notices/components/MealCard";
 
 function Home() {
   const hotIssues = [
@@ -33,6 +34,18 @@ function Home() {
         <HeaderText text="오늘의 식단" />
         <RestaurantButton />
       </Header>
+      <MealCard
+        meal="석식"
+        time="17:00~18:30"
+        mealMenus={[
+          "돼지고기김치찌개",
+          "쌀밥",
+          "너비아니구이*데리아끼소스",
+          "어묵볶음",
+          "건파래볶음",
+          "깍두기",
+        ]}
+      />
       <HotIssue>MJU hot issue</HotIssue>
       <HotIssueContainer>
         {hotIssues.map((issue, index) => (
@@ -52,7 +65,8 @@ function Home() {
 const HomeContainer = styled.div`
   max-width: 480px;
   background-color: #fff;
-  padding: 72px 24px;
+  padding: 0 24px;
+  padding-top: 100px;
 `;
 
 const Header = styled.div`
