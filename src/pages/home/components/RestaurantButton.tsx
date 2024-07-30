@@ -1,5 +1,6 @@
 import { SelectButton } from "@/assets/svg";
 import { MEALOPTIONS } from "@/constants/homeNotice";
+import { getColor } from "@/styles/color";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -27,7 +28,7 @@ const RestaurantButton: React.FC<RestaurantButtonProps> = ({
     <>
       <RestaurantButtonContainer onClick={() => handleOpenModal()}>
         <RestaurantButtonText>{buttonText}</RestaurantButtonText>
-        <SelectButton width={16} height={10} />
+        <SelectButton width={16} height={10} stroke={getColor()} />
       </RestaurantButtonContainer>
 
       {isModalOpen && (
@@ -50,6 +51,7 @@ const RestaurantButtonContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  color: ${getColor()};
 `;
 
 const RestaurantButtonText = styled.p`
@@ -65,7 +67,7 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background-color: #1616164d;
+  background-color: #ffffff33;
   width: 98px;
   height: 150px;
   border-radius: 8px;
@@ -78,7 +80,7 @@ const ModalOption = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
-  color: #fafafac9;
+  color: ${getColor()};
   text-align: center;
 `;
 

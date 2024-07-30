@@ -9,6 +9,8 @@ import { useNotices } from "@/hooks/api/useNotices";
 import HomeNoticeCard from "./components/HomeNoticeCard";
 import MealCard from "../notices/components/MealCard";
 import { useMeal } from "@/hooks/api/useMeal";
+import { getColor } from "@/styles/color";
+import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
 
 function Home() {
   const hotIssues = [
@@ -48,13 +50,13 @@ function Home() {
           "깍두기",
         ]}
       />
-      <HotIssue>MJU hot issue</HotIssue>
+      <HotIssue>{HOTISSUE}</HotIssue>
       <HotIssueContainer>
         {hotIssues.map((issue, index) => (
           <HotIssueComponent key={index} date={issue.date} text={issue.text} />
         ))}
       </HotIssueContainer>
-      <NoticeNav type={type} />
+      <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
       <NoticeWrapper>
         {hotIssues.map((notice, index) => (
           <HomeNoticeCard title={notice.text} date={notice.date} />
@@ -80,6 +82,7 @@ const HotIssue = styled.p`
   font-size: 20px;
   line-height: 24px;
   font-weight: 600;
+  color: ${getColor()};
 `;
 
 // 오른쪽 부분도 그냥 패딩 주면 어떨까 생각
@@ -93,7 +96,7 @@ const HotIssueContainer = styled.div`
 
 const NoticeWrapper = styled.div`
   min-height: 231px;
-  border-bottom: 1px solid #d0c1ba;
+  border-bottom: 1px solid ${getColor()};
   margin-top: 8px;
   display: flex;
   flex-direction: column;
