@@ -3,7 +3,13 @@ import { MEALOPTIONS } from "@/constants/homeNotice";
 import { useState } from "react";
 import styled from "styled-components";
 
-const RestaurantButton = () => {
+interface RestaurantButtonProps {
+  setCafeteria: (cafeteria: string) => void;
+}
+
+const RestaurantButton: React.FC<RestaurantButtonProps> = ({
+  setCafeteria,
+}) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [buttonText, setButtonText] = useState("학생 식당");
 
@@ -14,6 +20,7 @@ const RestaurantButton = () => {
   const handleSelect = (option: string) => {
     setButtonText(option);
     setModalOpen(false);
+    setCafeteria(option);
   };
 
   return (

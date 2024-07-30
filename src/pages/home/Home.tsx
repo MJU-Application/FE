@@ -4,10 +4,11 @@ import RestaurantButton from "./components/RestaurantButton";
 import HotIssueComponent from "@/components/common/HotIssueComponent";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNotices } from "@/hooks/api/useNotices";
 import HomeNoticeCard from "./components/HomeNoticeCard";
 import MealCard from "../notices/components/MealCard";
+import { useMeal } from "@/hooks/api/useMeal";
 
 function Home() {
   const hotIssues = [
@@ -20,22 +21,23 @@ function Home() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
+  const [cafeteria, setCafeteria] = useState("학생식당");
 
-  useEffect(() => {
-    if (!type) {
-      searchParams.set("type", encodeURIComponent("DAHACK"));
-      setSearchParams(searchParams);
-    }
-  }, [searchParams, setSearchParams, type]);
+  const data = useMeal({
+    date: "2024-06-30",
+    campus: "nature",
+    cafeteria: "myungjindang",
+  });
+  // const mealData = mealQuery.data;
 
   return (
     <HomeContainer>
       <Header>
         <HeaderText text="오늘의 식단" />
-        <RestaurantButton />
+        <RestaurantButton setCafeteria={setCafeteria} />
       </Header>
       <MealCard
-        meal="석식"
+        meal="조식"
         time="17:00~18:30"
         mealMenus={[
           "돼지고기김치찌개",
