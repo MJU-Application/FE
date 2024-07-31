@@ -52,4 +52,5 @@ const Content = styled.p`
   font-size: 16px;
   line-height: 20px;
   max-width: 233px;
+  flex: 1;
 `;

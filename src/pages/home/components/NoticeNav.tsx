@@ -7,8 +7,6 @@ import styled from "styled-components";
 function NoticeNav({ type }: { type: string | null }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const defaultType = HOMENOTICE[0].query;
-
   const handleCategoryChange = (newCategory: string) => {
     searchParams.set("type", encodeURIComponent(newCategory));
     setSearchParams(searchParams);
@@ -26,7 +24,7 @@ function NoticeNav({ type }: { type: string | null }) {
           {notice.name}
         </div>
       ))}
-      <EllipseButton fill={getColor()} />
+      <EllipseButton />
     </NoticeContainer>
   );
 }

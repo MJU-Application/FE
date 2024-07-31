@@ -11,7 +11,6 @@ function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
   const { data } = useNotices(type);
-
   useEffect(() => {
     if (!type) {
       searchParams.set("type", encodeURIComponent("ILLBAN"));

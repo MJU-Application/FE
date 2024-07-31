@@ -1,17 +1,41 @@
-import HeaderNextButton from "@/components/common/HeaderNextButton";
 import HeaderText from "@/components/common/HeaderText";
 import styled from "styled-components";
 import ScheduleCard from "./components/ScheduleCard";
 import { useSchedule } from "@/hooks/api/useSchedule";
+import HeaderNextButton from "./components/HeaderNextButton";
+import { setDate } from "@/utils/setDate";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 function Schedule() {
-  const { data } = useSchedule({ year: 2024, month: 7 });
+  const [date, setDate] = useState<Date>(new Date());
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set("year", date.getFullYear().toString());
+    newSearchParams.set("month", (date.getMonth() + 1).toString());
+
+    setSearchParams(newSearchParams);
+  }, [date, setSearchParams]);
+  const { data } = useSchedule({
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+  });
+
+  const handleChangeMonth = (direction: "next" | "previous") => {
+    const newDate = new Date(date);
+    if (direction === "next") newDate.setMonth(newDate.getMonth() + 1);
+    else newDate.setMonth(newDate.getMonth() - 1);
+
+    setDate(newDate);
+  };
 
   return (
     <ScheduleContainer>
       <ScheduleHeader>
         <HeaderText text={"학사일정"} />
-        <HeaderNextButton title={"2024년 7월"} />
+        <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
       </ScheduleHeader>
       <ScheduleCardContainer>
         {data.data.schedule.map((schedule) => (
