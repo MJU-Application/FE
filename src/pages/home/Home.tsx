@@ -68,7 +68,7 @@ function Home() {
 
 const HomeContainer = styled.div`
   max-width: 480px;
-  background-color: #fff;
+  background-color: #fcfcfc;
   padding: 0 24px;
   padding-top: 100px;
 `;

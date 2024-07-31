@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { NAV_MENU } from "@/constants/navigation";
+import { getColor } from "@/styles/color";
 function BottomNavigation() {
   const location = useLocation();
   if (location.pathname === "/notice/search") {
@@ -34,7 +35,7 @@ const NavStyle = styled(NavLink)`
   font: 600 10px;
   color: #a2a2a2;
   &.active {
-    color: #005eb8;
+    color: ${getColor()};
   }
 `;
 

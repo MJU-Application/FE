@@ -11,5 +11,5 @@ export type Schedule = {
 };
 
 export interface SchedulesResponse {
-  data: APISchedules[];
+  data: APISchedules;
 }

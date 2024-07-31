@@ -7,6 +7,6 @@ export async function getSchedule({
 }: {
   year: number;
   month: number;
-}): Promise<APISchedules[]> {
+}): Promise<APISchedules> {
   return await api.get(`/schedule?year=${year}&month=${month}`);
 }
