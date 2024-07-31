@@ -8,12 +8,7 @@ function Header() {
       <Head>
         <div className="logo">로고</div>
         <Link to={"search"} className="searchIcon">
-          <SearchIcon
-            width={22}
-            height={22}
-            fill={getColor()}
-            stroke={getColor()}
-          />
+          <SearchIcon width={22} height={22} stroke={getColor()} />
         </Link>
       </Head>
     </>
