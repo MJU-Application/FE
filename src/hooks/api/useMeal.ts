@@ -4,6 +4,7 @@ import {
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
 import { MealResponse, Meal } from "@/types/meal";
+
 export function useMeal({
   date,
   campus,

@@ -1,5 +1,6 @@
 import { EllipseButton } from "@/assets/svg";
 import { HOMENOTICE } from "@/constants/homeNotice";
+import { getColor } from "@/styles/color";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,8 +30,8 @@ function NoticeNav({ type }: { type: string | null }) {
 }
 
 const NoticeContainer = styled.div`
-  border-top: 1px solid #d0c1ba;
-  border-bottom: 1px solid #d0c1ba;
+  border-top: 1px solid ${getColor()};
+  border-bottom: 1px solid ${getColor()};
   display: flex;
   align-items: center;
   padding: 8px 0;
@@ -49,7 +50,7 @@ const NoticeContainer = styled.div`
   }
 
   .activate {
-    color: #000000;
+    color: ${getColor()};
   }
 
   .activate::after {
@@ -59,7 +60,7 @@ const NoticeContainer = styled.div`
     left: 0;
     width: 0;
     height: 0.4rem;
-    background-color: #000000;
+    background-color: ${getColor()};
     animation: borderExpand 0.3s forwards;
   }
 

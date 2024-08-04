@@ -1,7 +1,12 @@
 const HOMENOTICE = [
-  { name: "대학 공지", query: "DAHACK" },
-  { name: "장학/학자금", query: "JANGHAK" },
-  { name: "진로/취업/창업 공지", query: "JINLO" },
+  { name: "공지", query: "GONGJI" },
+  { name: "행사", query: "HANGSA" },
+  { name: "학사", query: "HACKSA" },
+  { name: "장학", query: "JANGHAK" },
+  { name: "취업", query: "CHWIUP" },
 ];
 
-export { HOMENOTICE };
+const MEALOPTIONS = ["명진당", "학생식당", "생활관"];
+const HOTISSUE = "MJU hot issue";
+
+export { HOMENOTICE, MEALOPTIONS, HOTISSUE };

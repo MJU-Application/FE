@@ -4,9 +4,12 @@ import RestaurantButton from "./components/RestaurantButton";
 import HotIssueComponent from "@/components/common/HotIssueComponent";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useNotices } from "@/hooks/api/useNotices";
+import { useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
+import MealCard from "../notices/components/MealCard";
+import { useMeal } from "@/hooks/api/useMeal";
+import { getColor } from "@/styles/color";
+import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
 
 function Home() {
   const hotIssues = [
@@ -19,27 +22,40 @@ function Home() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
+  const [cafeteria, setCafeteria] = useState("학생식당");
 
-  useEffect(() => {
-    if (!type) {
-      searchParams.set("type", encodeURIComponent("DAHACK"));
-      setSearchParams(searchParams);
-    }
-  }, [searchParams, setSearchParams, type]);
+  const data = useMeal({
+    date: "2024-06-30",
+    campus: "nature",
+    cafeteria: "myungjindang",
+  });
+  // const mealData = mealQuery.data;
 
   return (
     <HomeContainer>
       <Header>
         <HeaderText text="오늘의 식단" />
-        <RestaurantButton />
+        <RestaurantButton setCafeteria={setCafeteria} />
       </Header>
-      <HotIssue>MJU hot issue</HotIssue>
+      <MealCard
+        meal="조식"
+        time="17:00~18:30"
+        mealMenus={[
+          "돼지고기김치찌개",
+          "쌀밥",
+          "너비아니구이*데리아끼소스",
+          "어묵볶음",
+          "건파래볶음",
+          "깍두기",
+        ]}
+      />
+      <HotIssue>{HOTISSUE}</HotIssue>
       <HotIssueContainer>
         {hotIssues.map((issue, index) => (
           <HotIssueComponent key={index} date={issue.date} text={issue.text} />
         ))}
       </HotIssueContainer>
-      <NoticeNav type={type} />
+      <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
       <NoticeWrapper>
         {hotIssues.map((notice, index) => (
           <HomeNoticeCard title={notice.text} date={notice.date} />
@@ -51,8 +67,9 @@ function Home() {
 
 const HomeContainer = styled.div`
   max-width: 480px;
-  background-color: #fff;
-  padding: 72px 24px;
+  background-color: #fcfcfc;
+  padding: 0 24px;
+  padding-top: 100px;
 `;
 
 const Header = styled.div`
@@ -64,6 +81,7 @@ const HotIssue = styled.p`
   font-size: 20px;
   line-height: 24px;
   font-weight: 600;
+  color: ${getColor()};
 `;
 
 // 오른쪽 부분도 그냥 패딩 주면 어떨까 생각
@@ -77,7 +95,7 @@ const HotIssueContainer = styled.div`
 
 const NoticeWrapper = styled.div`
   min-height: 231px;
-  border-bottom: 1px solid #d0c1ba;
+  border-bottom: 1px solid ${getColor()};
   margin-top: 8px;
   display: flex;
   flex-direction: column;

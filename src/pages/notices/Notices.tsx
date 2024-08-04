@@ -2,16 +2,15 @@ import styled from "styled-components";
 import NotcieCard from "@/pages/notices/components/NoticeCard";
 import { useNotices } from "@/hooks/api/useNotices";
 import Menu from "@/pages/notices/components/Menu";
-import Header from "@/pages/notices/components/Header";
+import Header from "@/components/common/Header";
 import { useSearchParams } from "react-router-dom";
-import { Notice } from "@/api/Notice";
 import { useEffect } from "react";
+import { APINotice } from "@/types/notice";
 
 function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
   const { data } = useNotices(type);
-
   useEffect(() => {
     if (!type) {
       searchParams.set("type", encodeURIComponent("ILLBAN"));
@@ -26,7 +25,7 @@ function Notices() {
         <Menu type={type} />
       </TopNavigation>
       <NoticeWrapper>
-        {data.data.map((notice: Notice) => (
+        {data.data.map((notice: APINotice) => (
           <NotcieCard
             title={notice.title}
             date={notice.noticedAt}
@@ -45,7 +44,7 @@ const TopNavigation = styled.div`
   position: fixed;
   width: 100%;
   max-width: 480px;
-  background-color: #fff;
+  background-color: #fcfcfc;
 `;
 
 const NoticeWrapper = styled.div`

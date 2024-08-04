@@ -11,5 +11,10 @@ export type Schedule = {
 };
 
 export interface SchedulesResponse {
-  data: APISchedules[];
+  data: APISchedules;
+}
+
+export interface HeaderNextButtonProps {
+  date: Date;
+  handleChangeMonth: (direction: "next" | "previous") => void;
 }

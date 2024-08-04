@@ -1,4 +1,5 @@
 import { NOTICE } from "@/constants/notice";
+import { getColor } from "@/styles/color";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -43,7 +44,7 @@ const MenuBar = styled.div`
   }
 
   .activate {
-    color: #005eb8;
+    color: ${getColor()};
   }
 
   .activate::after {
@@ -53,7 +54,7 @@ const MenuBar = styled.div`
     left: 0;
     width: 0;
     height: 0.2rem;
-    background-color: #005eb8;
+    background-color: ${getColor()};
     animation: borderExpand 0.3s forwards;
   }
 
