@@ -1,3 +1,5 @@
+import { CAFETERIALIST } from "@/constants/meal";
+
 export type Menu = {
   category: string;
   food: string[];
@@ -19,4 +21,8 @@ export type Meal = {
 
 export interface MealResponse {
   data: APIMeal[];
+}
+
+export interface CafeteriaModalProps {
+  onClick: (selectedCafeteria: (typeof CAFETERIALIST)[number]["name"]) => void;
 }

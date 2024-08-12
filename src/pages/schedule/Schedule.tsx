@@ -10,18 +10,29 @@ import { useSearchParams } from "react-router-dom";
 function Schedule() {
   const [date, setDate] = useState<Date>(new Date());
   const [searchParams, setSearchParams] = useSearchParams();
+  const type = searchParams.get("year");
 
   useEffect(() => {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    newSearchParams.set("year", date.getFullYear().toString());
-    newSearchParams.set("month", (date.getMonth() + 1).toString());
+    if (!type) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set("year", date.getFullYear().toString());
+      newSearchParams.set("month", (date.getMonth() + 1).toString());
 
-    setSearchParams(newSearchParams);
-  }, [date, setSearchParams]);
+      setSearchParams(newSearchParams);
+    }
+  }, [date, setSearchParams, type]);
+
   const { data } = useSchedule({
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
+    year: Number(searchParams.get("year")),
+    month: Number(searchParams.get("month")),
   });
+
+  console.log(data);
+
+  // console.log(
+  //   Number(searchParams.get("year")),
+  //   Number(searchParams.get("month"))
+  // );
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);
@@ -37,11 +48,11 @@ function Schedule() {
         <HeaderText text={"학사일정"} />
         <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
       </ScheduleHeader>
-      <ScheduleCardContainer>
+      {/* <ScheduleCardContainer>
         {data.data.schedule.map((schedule) => (
           <ScheduleCard period={schedule.period} contents={schedule.contents} />
         ))}
-      </ScheduleCardContainer>
+      </ScheduleCardContainer> */}
     </ScheduleContainer>
   );
 }
