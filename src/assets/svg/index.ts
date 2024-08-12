@@ -7,6 +7,7 @@ import MealComponent from "@assets/svg/mealComponent.svg?react";
 import NextButton from "@assets/svg/nextButton.svg?react";
 import ScheduleEllipse from "@assets/svg/scheduleEllipse.svg?react";
 import Alarm from "@assets/svg/alarm.svg?react";
+import MealComponentEmpty from "@assets/svg/mealComponentEmpty.svg?react";
 
 export { SearchIcon };
 export { SelectButton };
@@ -16,3 +17,4 @@ export { MealComponent };
 export { NextButton };
 export { ScheduleEllipse };
 export { Alarm };
+export { MealComponentEmpty };
