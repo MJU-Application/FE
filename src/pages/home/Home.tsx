@@ -26,10 +26,8 @@ function Home() {
 
   const mealData = useMeal({
     date: "2024-06-30",
-    campus: "nature",
-    cafeteria: "myungjindang",
+    cafeteria: "인문캠퍼스 학생회관 식당",
   });
-  console.log(mealData.data.data[0].cafeteria, new Date().getHours());
 
   return (
     <HomeContainer>

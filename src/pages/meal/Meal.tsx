@@ -6,10 +6,11 @@ import { useState } from "react";
 import { useMeal } from "@/hooks/api/useMeal";
 import MealCard from "@/components/common/MealCard";
 import { getMealTime } from "@/utils/getMealTime";
-import { CAFETERIALIST } from "@/constants/meal";
+import { CAFETERIALIST, INITMEALARRAY } from "@/constants/meal";
 import { NextButton } from "@/assets/svg";
 import { getColor } from "@/styles/color";
 import CafeteriaModal from "./components/CafeteriaModal";
+import { setMealDate } from "@/utils/setDate";
 
 // 학생식당, 명진당, 생활관 타입만 적용
 type CafeteriaName = (typeof CAFETERIALIST)[number]["name"];
@@ -20,12 +21,16 @@ function Meal() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const mealData = useMeal({
-    date: "2024-06-30",
-    campus: "nature",
-    cafeteria: "myungjindang",
+    date: setMealDate(date),
+    cafeteria: "인문캠퍼스 학생회관 식당",
   });
 
-  const mealArray = mealData.data.data[0].menu;
+  // 음식 리스트 포맷
+  // * 리스트가 비어있을 시 존재 X 기본 항목으로 초기화
+  const mealArray =
+    mealData.data.data.data.menu.length > 0
+      ? mealData.data.data.data.menu
+      : INITMEALARRAY;
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);
@@ -64,7 +69,8 @@ function Meal() {
           ))}
         </MealCardContainer>
       </MealContainer>
-      <SelectCafeteria onClick={handleOpenModal}>
+      {/* 인문캠퍼스밖에 적용 안 되는 것으로 확인 추후 수정 */}
+      {/* <SelectCafeteria onClick={handleOpenModal}>
         {cafeteria}
         <NextButton
           stroke={getColor()}
@@ -80,7 +86,7 @@ function Meal() {
             <CafeteriaModal onClick={handleSetCafeteria} />
           </ModalContainer>
         </>
-      )}
+      )} */}
     </>
   );
 }

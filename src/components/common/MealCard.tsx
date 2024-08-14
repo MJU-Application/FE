@@ -4,26 +4,26 @@ import { MealCardProp } from "@/types/home";
 import styled from "styled-components";
 
 const MealCard = ({ category, time, mealMenus }: MealCardProp) => {
-  const ishasMeal = mealMenus.length > 0;
+  const ishasMeal = mealMenus.length > 1;
   return (
     <MealCardContainer>
       <div className={ishasMeal ? "full" : "empty"} />
       <Container>
-        <LeftOption hasMenu={ishasMeal}>
+        <LeftOption $hasmenu={ishasMeal}>
           <MealText>{category}</MealText>
           <TimeText>{time}</TimeText>
         </LeftOption>
         <MenuList>
           {ishasMeal ? (
             mealMenus.map((menu, index) => (
-              <MenuItem key={index} hasMenu={ishasMeal}>
+              <MenuItem key={index} $hasmenu={ishasMeal}>
                 {menu}
               </MenuItem>
             ))
           ) : (
             <MenuItem
               key="no-menu"
-              hasMenu={ishasMeal}
+              $hasmenu={ishasMeal}
             >{`${category}이 존재하지 않습니다.`}</MenuItem>
           )}
         </MenuList>
@@ -69,14 +69,15 @@ const Container = styled.div`
   left: 20px;
   top: 0;
   bottom: 0;
-  gap: 32px;
+  gap: 25px;
 `;
 
-const LeftOption = styled.div<{ hasMenu: boolean }>`
+const LeftOption = styled.div<{ $hasmenu: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${(props) => (props.hasMenu ? "#4e4337" : "#C9CDD2")};
+  min-width: 75px;
+  color: ${(props) => (props.$hasmenu ? "#4e4337" : "#C9CDD2")};
   gap: 8px;
 `;
 const MealText = styled.div`
@@ -95,9 +96,9 @@ const MenuList = styled.ul`
   padding: 0;
 `;
 
-const MenuItem = styled.li<{ hasMenu: boolean }>`
+const MenuItem = styled.li<{ $hasmenu: boolean }>`
   font-size: 16px;
-  color: ${(props) => (props.hasMenu ? "#4e4337" : "#C9CDD2")};
+  color: ${(props) => (props.$hasmenu ? "#4e4337" : "#C9CDD2")};
   font-weight: 600;
   line-height: 19.2px;
 `;

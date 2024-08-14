@@ -1,14 +1,14 @@
 import { NextButton } from "@/assets/svg";
 import { getColor } from "@/styles/color";
 import { HeaderNextButtonProps } from "@/types/schedule";
-import { setMealDate } from "@/utils/setDate";
+import { setMealHeaderDate } from "@/utils/setDate";
 import styled from "styled-components";
 
 const HeaderNextButton = ({
   date,
   handleChangeMonth,
 }: HeaderNextButtonProps) => {
-  const title = setMealDate(date);
+  const title = setMealHeaderDate(date);
 
   return (
     <Container>

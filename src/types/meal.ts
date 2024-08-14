@@ -5,6 +5,10 @@ export type Menu = {
   food: string[];
 };
 
+export interface APIMealData {
+  data: APIMeal;
+}
+
 export interface APIMeal {
   id: number;
   date: string;
@@ -15,12 +19,11 @@ export interface APIMeal {
 
 export type Meal = {
   date: string;
-  campus: string;
   cafeteria: string;
 };
 
 export interface MealResponse {
-  data: APIMeal[];
+  data: APIMealData;
 }
 
 export interface CafeteriaModalProps {

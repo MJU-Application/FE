@@ -27,7 +27,7 @@ function Schedule() {
     month: Number(searchParams.get("month")),
   });
 
-  console.log(data);
+  console.log("date", data);
 
   // console.log(
   //   Number(searchParams.get("year")),
