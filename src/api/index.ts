@@ -10,7 +10,7 @@ export default api;
 
 export const scheduleApi = axios.create({
   baseURL:
-    "https://hstqzhnctxsartnez2avr2pdga0adzri.lambda-url.ap-northeast-2.on.aws/",
+    "https://hstqzhnctxsartnez2avr2pdga0adzri.lambda-url.ap-northeast-2.on.aws",
   timeout: 2000,
 });
 
