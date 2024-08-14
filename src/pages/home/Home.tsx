@@ -56,7 +56,7 @@ function Home() {
       <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
       <NoticeWrapper>
         {hotIssues.map((notice, index) => (
-          <HomeNoticeCard title={notice.text} date={notice.date} />
+          <HomeNoticeCard key={index} title={notice.text} date={notice.date} />
         ))}
       </NoticeWrapper>
     </HomeContainer>
