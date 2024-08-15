@@ -36,7 +36,7 @@ function Search() {
         </form>
       </SearchWrapper>
       <Suspense fallback={<p>글목록 로딩중...</p>}>
-        <SearhResult keyword={keyword} />
+        <SearhResult title={keyword} />
       </Suspense>
     </>
   );

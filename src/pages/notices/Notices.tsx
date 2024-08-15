@@ -10,7 +10,7 @@ import { APINotice } from "@/types/notice";
 function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
-  const { data } = useNotices(type);
+  // const { data } = useNotices(type, 0, 10);
   useEffect(() => {
     if (!type) {
       searchParams.set("type", encodeURIComponent("ILLBAN"));
@@ -18,13 +18,15 @@ function Notices() {
     }
   }, [searchParams, setSearchParams, type]);
 
+  console.log();
+
   return (
     <>
       <TopNavigation>
-        <Header />
+        <Header isSearchIcon={true} />
         <Menu type={type} />
       </TopNavigation>
-      <NoticeWrapper>
+      {/* <NoticeWrapper>
         {data.data.map((notice: APINotice) => (
           <NotcieCard
             title={notice.title}
@@ -33,7 +35,7 @@ function Notices() {
             key={notice.id}
           />
         ))}
-      </NoticeWrapper>
+      </NoticeWrapper> */}
     </>
   );
 }

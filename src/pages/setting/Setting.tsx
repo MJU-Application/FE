@@ -38,7 +38,7 @@ function Setting() {
 export default Setting;
 
 const SettingContainer = styled.div`
-  padding: 64px 16px;
+  padding: 64px 24px;
 `;
 
 const ListContainer = styled.div`

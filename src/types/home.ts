@@ -13,3 +13,25 @@ export interface MealCardProp {
   time: string;
   mealMenus: string[];
 }
+
+export type NoticeType = {
+  type: "일반공지" | "행사공지" | "학사공지";
+};
+
+export interface Notice {
+  id: number;
+  type: string;
+  notice_no: number;
+  title: string;
+  writer: string;
+  noticedAt: string;
+  views: number;
+  link: string;
+}
+
+export interface NoticeResponse {
+  success: boolean;
+  data: {
+    content: Notice[];
+  };
+}

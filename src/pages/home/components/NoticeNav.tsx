@@ -37,7 +37,7 @@ const NoticeContainer = styled.div`
   padding: 8px 0;
   max-height: 43px;
   margin-top: 20px;
-  gap: 16px;
+  gap: 20px;
 
   .menu {
     cursor: pointer;
