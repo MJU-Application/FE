@@ -9,7 +9,7 @@ const ScheduleCard = ({ period, contents }: Schedule) => {
     <Container>
       <Period>
         <span>{start}</span>
-        <span>~</span>
+        {end && <span>~</span>}
         <span>{end}</span>
       </Period>
       <ScheduleEllipse fill={getColor()} />

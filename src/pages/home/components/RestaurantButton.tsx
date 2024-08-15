@@ -5,21 +5,21 @@ import { useState } from "react";
 import styled from "styled-components";
 
 interface RestaurantButtonProps {
+  cafeteria: string;
   setCafeteria: (cafeteria: string) => void;
 }
 
 const RestaurantButton: React.FC<RestaurantButtonProps> = ({
+  cafeteria,
   setCafeteria,
 }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [buttonText, setButtonText] = useState("학생 식당");
 
   function handleOpenModal(): void {
     setModalOpen((prev) => !prev);
   }
 
   const handleSelect = (option: string) => {
-    setButtonText(option);
     setModalOpen(false);
     setCafeteria(option);
   };
@@ -27,7 +27,7 @@ const RestaurantButton: React.FC<RestaurantButtonProps> = ({
   return (
     <>
       <RestaurantButtonContainer onClick={() => handleOpenModal()}>
-        <RestaurantButtonText>{buttonText}</RestaurantButtonText>
+        <RestaurantButtonText>{cafeteria}</RestaurantButtonText>
         <SelectButton width={16} height={10} stroke={getColor()} />
       </RestaurantButtonContainer>
 

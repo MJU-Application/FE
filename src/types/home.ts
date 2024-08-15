@@ -9,7 +9,7 @@ export interface HomeNoticeCardProp {
 }
 
 export interface MealCardProp {
-  meal: string;
+  category: string;
   time: string;
   mealMenus: string[];
 }

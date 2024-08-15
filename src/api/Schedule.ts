@@ -1,4 +1,4 @@
-import api from "@/api";
+import { scheduleApi } from "@/api";
 import { APISchedules } from "@/types/schedule";
 
 export async function getSchedule({
@@ -8,5 +8,5 @@ export async function getSchedule({
   year: number;
   month: number;
 }): Promise<APISchedules> {
-  return await api.get(`/schedule?year=${year}&month=${month}`);
+  return await scheduleApi.get(`/?year=${year}&month=${month}`);
 }

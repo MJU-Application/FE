@@ -10,8 +10,12 @@ export type Schedule = {
   contents: string;
 };
 
-export interface SchedulesResponse {
+export interface SchedulesAPIResponse {
   data: APISchedules;
+}
+
+export interface SchedulesResponse {
+  data: SchedulesAPIResponse;
 }
 
 export interface HeaderNextButtonProps {

@@ -6,7 +6,7 @@ import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
-import MealCard from "../notices/components/MealCard";
+import MealCard from "../../components/common/MealCard";
 import { useMeal } from "@/hooks/api/useMeal";
 import { getColor } from "@/styles/color";
 import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
@@ -24,22 +24,20 @@ function Home() {
   const type = searchParams.get("type");
   const [cafeteria, setCafeteria] = useState("학생식당");
 
-  const data = useMeal({
+  const mealData = useMeal({
     date: "2024-06-30",
-    campus: "nature",
-    cafeteria: "myungjindang",
+    cafeteria: "인문캠퍼스 학생회관 식당",
   });
-  // const mealData = mealQuery.data;
 
   return (
     <HomeContainer>
       <Header>
         <HeaderText text="오늘의 식단" />
-        <RestaurantButton setCafeteria={setCafeteria} />
+        <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
       </Header>
       <MealCard
-        meal="조식"
         time="17:00~18:30"
+        category={"조식"}
         mealMenus={[
           "돼지고기김치찌개",
           "쌀밥",
@@ -58,7 +56,7 @@ function Home() {
       <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
       <NoticeWrapper>
         {hotIssues.map((notice, index) => (
-          <HomeNoticeCard title={notice.text} date={notice.date} />
+          <HomeNoticeCard key={index} title={notice.text} date={notice.date} />
         ))}
       </NoticeWrapper>
     </HomeContainer>

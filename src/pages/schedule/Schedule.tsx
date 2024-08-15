@@ -3,25 +3,21 @@ import styled from "styled-components";
 import ScheduleCard from "./components/ScheduleCard";
 import { useSchedule } from "@/hooks/api/useSchedule";
 import HeaderNextButton from "./components/HeaderNextButton";
-import { setDate } from "@/utils/setDate";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Schedule() {
   const [date, setDate] = useState<Date>(new Date());
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    newSearchParams.set("year", date.getFullYear().toString());
-    newSearchParams.set("month", (date.getMonth() + 1).toString());
-
-    setSearchParams(newSearchParams);
-  }, [date, setSearchParams]);
-  const { data } = useSchedule({
+  const { data, refetch } = useSchedule({
     year: date.getFullYear(),
     month: date.getMonth() + 1,
   });
+
+  useEffect(() => {
+    refetch();
+  }, [date]);
+
+  const scheduleArray = data?.data?.data?.schedule || [];
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);
@@ -38,8 +34,12 @@ function Schedule() {
         <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
       </ScheduleHeader>
       <ScheduleCardContainer>
-        {data.data.schedule.map((schedule) => (
-          <ScheduleCard period={schedule.period} contents={schedule.contents} />
+        {scheduleArray.map((schedule) => (
+          <ScheduleCard
+            key={schedule.period}
+            period={schedule.period}
+            contents={schedule.contents}
+          />
         ))}
       </ScheduleCardContainer>
     </ScheduleContainer>
