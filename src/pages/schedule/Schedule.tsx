@@ -4,6 +4,7 @@ import ScheduleCard from "./components/ScheduleCard";
 import { useSchedule } from "@/hooks/api/useSchedule";
 import HeaderNextButton from "./components/HeaderNextButton";
 import { useState, useEffect } from "react";
+import Header from "@/components/common/Header";
 
 function Schedule() {
   const [date, setDate] = useState<Date>(new Date());
@@ -28,21 +29,24 @@ function Schedule() {
   };
 
   return (
-    <ScheduleContainer>
-      <ScheduleHeader>
-        <HeaderText text={"학사일정"} />
-        <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
-      </ScheduleHeader>
-      <ScheduleCardContainer>
-        {scheduleArray.map((schedule) => (
-          <ScheduleCard
-            key={schedule.period}
-            period={schedule.period}
-            contents={schedule.contents}
-          />
-        ))}
-      </ScheduleCardContainer>
-    </ScheduleContainer>
+    <>
+      <Header isSearchIcon={true} />
+      <ScheduleContainer>
+        <ScheduleHeader>
+          <HeaderText text={"학사일정"} />
+          <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
+        </ScheduleHeader>
+        <ScheduleCardContainer>
+          {scheduleArray.map((schedule) => (
+            <ScheduleCard
+              key={schedule.period}
+              period={schedule.period}
+              contents={schedule.contents}
+            />
+          ))}
+        </ScheduleCardContainer>
+      </ScheduleContainer>
+    </>
   );
 }
 
@@ -52,7 +56,6 @@ const ScheduleContainer = styled.div`
   max-width: 480px;
   background-color: #fcfcfc;
   padding: 0 24px;
-  padding-top: 100px;
 `;
 const ScheduleHeader = styled.div`
   display: flex;

@@ -23,7 +23,7 @@ function Notices() {
   return (
     <>
       <TopNavigation>
-        <Header />
+        <Header isSearchIcon={true} />
         <Menu type={type} />
       </TopNavigation>
       {/* <NoticeWrapper>

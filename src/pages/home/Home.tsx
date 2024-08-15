@@ -14,6 +14,7 @@ import { setMealDate } from "@/utils/setDate";
 import { getMealTime } from "@/utils/getMealTime";
 import { INITMEALARRAY } from "@/constants/meal";
 import { useMainNotice } from "@/hooks/api/useMainNotice";
+import Header from "@/components/common/Header";
 
 function Home() {
   const hotIssues = [
@@ -42,36 +43,47 @@ function Home() {
       : INITMEALARRAY;
 
   return (
-    <HomeContainer>
-      <Header>
-        <HeaderText text="오늘의 식단" />
-        <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
-      </Header>
-      <MealCardContainer>
-        {mealMenu.map((meal) => (
-          <MealCardWrapper key={meal.category}>
-            <MealCard
-              category={meal.category}
-              time={getMealTime(meal.category)}
-              mealMenus={meal.food}
-            />
-          </MealCardWrapper>
-        ))}
-      </MealCardContainer>
+    <>
+      <Header isSearchIcon={true} />
+      <HomeContainer>
+        <HomeHeader>
+          <HeaderText text="오늘의 식단" />
+          <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
+        </HomeHeader>
+        <MealCardContainer>
+          {mealMenu.map((meal) => (
+            <MealCardWrapper key={meal.category}>
+              <MealCard
+                category={meal.category}
+                time={getMealTime(meal.category)}
+                mealMenus={meal.food}
+              />
+            </MealCardWrapper>
+          ))}
+        </MealCardContainer>
 
-      <HotIssue>{HOTISSUE}</HotIssue>
-      <HotIssueContainer>
-        {hotIssues.map((issue, index) => (
-          <HotIssueComponent key={index} date={issue.date} text={issue.text} />
-        ))}
-      </HotIssueContainer>
-      <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
-      <NoticeWrapper>
-        {hotIssues.map((notice, index) => (
-          <HomeNoticeCard key={index} title={notice.text} date={notice.date} />
-        ))}
-      </NoticeWrapper>
-    </HomeContainer>
+        <HotIssue>{HOTISSUE}</HotIssue>
+        <HotIssueContainer>
+          {hotIssues.map((issue, index) => (
+            <HotIssueComponent
+              key={index}
+              date={issue.date}
+              text={issue.text}
+            />
+          ))}
+        </HotIssueContainer>
+        <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
+        <NoticeWrapper>
+          {hotIssues.map((notice, index) => (
+            <HomeNoticeCard
+              key={index}
+              title={notice.text}
+              date={notice.date}
+            />
+          ))}
+        </NoticeWrapper>
+      </HomeContainer>
+    </>
   );
 }
 
@@ -79,10 +91,9 @@ const HomeContainer = styled.div`
   max-width: 480px;
   background-color: #fcfcfc;
   padding: 0 24px;
-  padding-top: 100px;
 `;
 
-const Header = styled.div`
+const HomeHeader = styled.div`
   display: flex;
   justify-content: space-between;
 `;
