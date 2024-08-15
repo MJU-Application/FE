@@ -9,6 +9,12 @@ export interface APINotice {
   link: string;
 }
 
+export interface Page {
+  currentPage: number;
+  pageSize: number;
+}
+
 export interface NoticeResponse {
   data: APINotice[];
+  pagination: Page;
 }

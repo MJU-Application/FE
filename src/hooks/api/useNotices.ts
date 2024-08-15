@@ -6,12 +6,14 @@ import {
 import { NoticeResponse } from "@/types/notice";
 
 export function useNotices(
-  category: string | null
+  category: string | null,
+  page: number,
+  size: number
 ): UseSuspenseQueryResult<NoticeResponse, Error> {
   const QUERY_KEY = "Notices";
   return useSuspenseQuery({
     queryKey: [QUERY_KEY, category],
-    queryFn: () => getNotices(category),
+    queryFn: () => getNotices(page, size),
   });
 }
 

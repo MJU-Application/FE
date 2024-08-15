@@ -38,6 +38,7 @@ const MealCardContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
+  min-width: 330px;
   height: 180px;
   .full {
     position: absolute;

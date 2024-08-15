@@ -10,6 +10,10 @@ import MealCard from "../../components/common/MealCard";
 import { useMeal } from "@/hooks/api/useMeal";
 import { getColor } from "@/styles/color";
 import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
+import { setMealDate } from "@/utils/setDate";
+import { getMealTime } from "@/utils/getMealTime";
+import { INITMEALARRAY } from "@/constants/meal";
+import { useMainNotice } from "@/hooks/api/useMainNotice";
 
 function Home() {
   const hotIssues = [
@@ -25,9 +29,17 @@ function Home() {
   const [cafeteria, setCafeteria] = useState("학생식당");
 
   const mealData = useMeal({
-    date: "2024-06-30",
+    date: setMealDate(new Date()),
     cafeteria: "인문캠퍼스 학생회관 식당",
   });
+
+  // const homeNoticeData = useMainNotice({ type: "일반공지" });
+  // console.log(homeNoticeData);
+
+  const mealMenu =
+    mealData.data.data.data.menu.length > 0
+      ? mealData.data.data.data.menu
+      : INITMEALARRAY;
 
   return (
     <HomeContainer>
@@ -35,18 +47,18 @@ function Home() {
         <HeaderText text="오늘의 식단" />
         <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
       </Header>
-      <MealCard
-        time="17:00~18:30"
-        category={"조식"}
-        mealMenus={[
-          "돼지고기김치찌개",
-          "쌀밥",
-          "너비아니구이*데리아끼소스",
-          "어묵볶음",
-          "건파래볶음",
-          "깍두기",
-        ]}
-      />
+      <MealCardContainer>
+        {mealMenu.map((meal) => (
+          <MealCardWrapper key={meal.category}>
+            <MealCard
+              category={meal.category}
+              time={getMealTime(meal.category)}
+              mealMenus={meal.food}
+            />
+          </MealCardWrapper>
+        ))}
+      </MealCardContainer>
+
       <HotIssue>{HOTISSUE}</HotIssue>
       <HotIssueContainer>
         {hotIssues.map((issue, index) => (
@@ -73,6 +85,17 @@ const HomeContainer = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const MealCardContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+`;
+
+const MealCardWrapper = styled.div`
+  scroll-snap-align: start;
+  flex: 0 0 auto;
 `;
 
 const HotIssue = styled.p`

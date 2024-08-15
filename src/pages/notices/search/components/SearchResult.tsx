@@ -3,19 +3,24 @@ import NotcieCard from "@/pages/notices/components/NoticeCard";
 import styled from "styled-components";
 import { useSearchNotice } from "@/hooks/api/useSearchNotice";
 
-function SearchResult({ keyword }: { keyword: string | null }) {
-  const { data } = useSearchNotice(keyword);
+function SearchResult({ title }: { title: string | null }) {
+  // const { data } = useSearchNotice({
+  //   page: 0,
+  //   size: 10,
+  //   category: "학사공지",
+  //   title: title,
+  // });
 
   return (
     <Result>
-      {data?.data.map((notice: APINotice) => (
+      {/* {data?.data.map((notice: APINotice) => (
         <NotcieCard
           key={notice.id}
           title={notice.title}
           link={notice.link}
           date={notice.noticedAt}
         />
-      ))}
+      ))} */}
     </Result>
   );
 }
