@@ -1,20 +1,19 @@
 import HeaderText from "@/components/common/HeaderText";
 import styled from "styled-components";
 import RestaurantButton from "./components/RestaurantButton";
-import HotIssueComponent from "@/components/common/HotIssueComponent";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
-import MealCard from "../../components/common/MealCard";
 import { useMeal } from "@/hooks/api/useMeal";
 import { getColor } from "@/styles/color";
 import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
 import { setMealDate } from "@/utils/setDate";
-import { getMealTime } from "@/utils/getMealTime";
 import { INITMEALARRAY } from "@/constants/meal";
 import { useMainNotice } from "@/hooks/api/useMainNotice";
 import Header from "@/components/common/Header";
+import MealCarousel from "@/pages/home/components/MealCarousel";
+import HotCarousel from "@/pages/home/components/HotCarousel";
 
 function Home() {
   const hotIssues = [
@@ -50,28 +49,8 @@ function Home() {
           <HeaderText text="오늘의 식단" />
           <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
         </HomeHeader>
-        <MealCardContainer>
-          {mealMenu.map((meal) => (
-            <MealCardWrapper key={meal.category}>
-              <MealCard
-                category={meal.category}
-                time={getMealTime(meal.category)}
-                mealMenus={meal.food}
-              />
-            </MealCardWrapper>
-          ))}
-        </MealCardContainer>
-
-        <HotIssue>{HOTISSUE}</HotIssue>
-        <HotIssueContainer>
-          {hotIssues.map((issue, index) => (
-            <HotIssueComponent
-              key={index}
-              date={issue.date}
-              text={issue.text}
-            />
-          ))}
-        </HotIssueContainer>
+        <MealCarousel mealMenu={mealMenu} />
+        <HotCarousel hotIssues={hotIssues} />
         <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
         <NoticeWrapper>
           {hotIssues.map((notice, index) => (
@@ -91,38 +70,13 @@ const HomeContainer = styled.div`
   max-width: 480px;
   background-color: #fcfcfc;
   padding: 0 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const HomeHeader = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const MealCardContainer = styled.div`
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-`;
-
-const MealCardWrapper = styled.div`
-  scroll-snap-align: start;
-  flex: 0 0 auto;
-`;
-
-const HotIssue = styled.p`
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-  color: ${getColor()};
-`;
-
-// 오른쪽 부분도 그냥 패딩 주면 어떨까 생각
-const HotIssueContainer = styled.div`
-  display: flex;
-  overflow-x: auto;
-  gap: 12px;
-  padding-right: 24;
-  margin-right: -24px;
 `;
 
 const NoticeWrapper = styled.div`
