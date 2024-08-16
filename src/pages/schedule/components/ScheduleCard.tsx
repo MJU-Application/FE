@@ -4,7 +4,9 @@ import { Schedule } from "@/types/schedule";
 import styled from "styled-components";
 
 const ScheduleCard = ({ period, contents }: Schedule) => {
-  const [start, end] = period.split(" ~ ");
+  const regex = /\s*\([A-Za-z]{3}\)/g;
+  const [start, end] = period.replace(regex, "").split(" ~ ");
+  console.log(period);
   return (
     <Container>
       <Period>
@@ -49,7 +51,7 @@ const Period = styled.p`
 
 const Content = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 20px;
   max-width: 233px;
   flex: 1;
