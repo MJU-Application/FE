@@ -2,7 +2,6 @@ import { NextButton } from "@/assets/svg";
 import { getColor } from "@/styles/color";
 import { HeaderNextButtonProps } from "@/types/schedule";
 import { setDate } from "@/utils/setDate";
-import { useState } from "react";
 import styled from "styled-components";
 
 const HeaderNextButton = ({
@@ -40,5 +39,4 @@ const Title = styled.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  width: 110px;
 `;
