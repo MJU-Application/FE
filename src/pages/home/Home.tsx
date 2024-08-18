@@ -3,61 +3,67 @@ import styled from "styled-components";
 import RestaurantButton from "./components/RestaurantButton";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
 import { useMeal } from "../../hooks/api/useMeal";
 import { getColor } from "../../styles/color";
 import { HOMENOTICE, HOTISSUE } from "../../constants/homeNotice";
 import { setMealDate } from "../../utils/setDate";
-import { INITMEALARRAY } from "../../constants/meal";
+import { CAFETERIALIST, INITMEALARRAY } from "../../constants/meal";
 import { useMainNotice } from "../../hooks/api/useMainNotice";
 import Header from "../../components/common/Header";
 import MealCarousel from "../../pages/home/components/MealCarousel";
 import HotCarousel from "../../pages/home/components/HotCarousel";
+import { useHotIssue } from "../../hooks/api/useHotIssue";
+
+type CafeteriaName = (typeof CAFETERIALIST)[number];
 
 function Home() {
-  const hotIssues = [
-    { date: "2024.07.07", text: "공지사항 제목을 입력해주세요." },
-    { date: "2024.07.08", text: "2024년도 신입생 오리엔테이션 안내" },
-    { date: "2024.07.09", text: "여름 방학 학습 자료 배포" },
-    { date: "2024.07.10", text: "캠퍼스 안전 교육 세미나" },
-    { date: "2024.07.11", text: "장학금 신청 마감 안내" },
-  ];
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const type = searchParams.get("type");
-  const [cafeteria, setCafeteria] = useState("학생식당");
+  const type = searchParams.get("category");
+  const [cafeteria, setCafeteria] = useState<CafeteriaName>("인문학생회관");
 
-  const mealData = useMeal({
+  //쿼리를 바꿀까 생각
+  useEffect(() => {
+    if (!type) {
+      searchParams.set("category", decodeURIComponent("일반공지"));
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, type]);
+
+  const { data, refetch } = useMeal({
     date: setMealDate(new Date()),
-    cafeteria: "인문캠퍼스 학생회관 식당",
+    cafeteria: "인문학생회관",
   });
 
-  // const homeNoticeData = useMainNotice({ type: "일반공지" });
-  // console.log(homeNoticeData);
+  useEffect(() => {
+    refetch();
+  }, [cafeteria]);
 
   const mealMenu =
-    mealData.data.data.data.menu.length > 0
-      ? mealData.data.data.data.menu
-      : INITMEALARRAY;
+    data.data.data.menu.length > 0 ? data.data.data.menu : INITMEALARRAY;
+
+  const hotIssueData = useHotIssue();
+
+  const noticeData = useMainNotice(type);
 
   return (
     <>
-      <Header isSearchIcon={true} />
+      <Header isSearchIcon={false} />
       <HomeContainer>
         <HomeHeader>
-          <HeaderText text="오늘의 식단" />
+          <HeaderText text={"오늘의 식단"} />
           <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
         </HomeHeader>
         <MealCarousel mealMenu={mealMenu} />
-        <HotCarousel hotIssues={hotIssues} />
+        <HotCarousel hotIssues={hotIssueData.data.data.content} />
         <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
         <NoticeWrapper>
-          {hotIssues.map((notice, index) => (
+          {noticeData.data.data.content.map((notice, index) => (
             <HomeNoticeCard
               key={index}
-              title={notice.text}
-              date={notice.date}
+              title={notice.title}
+              date={notice.noticedAt}
             />
           ))}
         </NoticeWrapper>

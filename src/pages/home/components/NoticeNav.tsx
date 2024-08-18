@@ -8,7 +8,7 @@ function NoticeNav({ type }: { type: string | null }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleCategoryChange = (newCategory: string) => {
-    searchParams.set("type", encodeURIComponent(newCategory));
+    searchParams.set("category", decodeURIComponent(newCategory));
     setSearchParams(searchParams);
   };
   return (

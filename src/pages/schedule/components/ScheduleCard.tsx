@@ -6,7 +6,6 @@ import styled from "styled-components";
 const ScheduleCard = ({ period, contents }: Schedule) => {
   const regex = /\s*\([A-Za-z]{3}\)/g;
   const [start, end] = period.replace(regex, "").split(" ~ ");
-  console.log(period);
   return (
     <Container>
       <Period>

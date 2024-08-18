@@ -1,8 +1,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import { SearchIcon } from "../../../assets/svg";
+import { NextButton, SearchIcon } from "../../../assets/svg";
 import SearhResult from "../../../pages/notices/search/components/SearchResult";
+import { getColor } from "../../../styles/color";
 function Search() {
   const [value, setValue] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,13 +25,18 @@ function Search() {
     <>
       <SearchWrapper>
         <form onSubmit={handleSubmit} className="search_form">
-          <SearchIcon className="search_icon" width={18} height={18} />
+          <SearchIcon
+            className="search_icon"
+            width={18}
+            height={18}
+            stroke={getColor()}
+          />
           <input
             className="input"
             value={value}
             onChange={(e) => setValue(e.target.value)}
             type="text"
-            placeholder="공지 제목을 입력해주세요."
+            placeholder="검색어를 입력해주세요."
             autoFocus
           />
         </form>
@@ -50,7 +56,7 @@ const SearchWrapper = styled.div`
   .search_form {
     display: flex;
     align-items: center;
-    background-color: rgba(101, 168, 245, 0.32);
+    background: #e8e8fc;
     height: 43px;
     border-radius: 1rem;
     margin-top: 1rem;

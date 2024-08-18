@@ -4,23 +4,22 @@ import styled from "styled-components";
 import { useSearchNotice } from "../../../../hooks/api/useSearchNotice";
 
 function SearchResult({ title }: { title: string | null }) {
-  // const { data } = useSearchNotice({
-  //   page: 0,
-  //   size: 10,
-  //   category: "학사공지",
-  //   title: title,
-  // });
+  const { data } = useSearchNotice({
+    page: 0,
+    size: 10,
+    title: title,
+  });
 
   return (
     <Result>
-      {/* {data?.data.map((notice: APINotice) => (
+      {data?.data.data.notices.map((notice: APINotice) => (
         <NotcieCard
-          key={notice.id}
+          key={notice.notice_id}
           title={notice.title}
           link={notice.link}
           date={notice.noticedAt}
         />
-      ))} */}
+      ))}
     </Result>
   );
 }

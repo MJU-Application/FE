@@ -3,6 +3,7 @@ import HotIssueComponent from "../../../components/common/HotIssueComponent";
 import styled from "styled-components";
 import { HOTISSUE } from "../../../constants/homeNotice";
 import { getColor } from "../../../styles/color";
+import { Notice } from "../../../types/home";
 const settings = {
   infinite: true,
   speed: 500,
@@ -11,18 +12,18 @@ const settings = {
   centerPadding: "15%",
 };
 
-type ThotIssues = {
-  date: string;
-  text: string;
-};
-
-function HotCarousel({ hotIssues }: { hotIssues: ThotIssues[] }) {
+function HotCarousel({ hotIssues }: { hotIssues: Notice[] }) {
   return (
     <HotIssueContainer>
       <HotIssue>{HOTISSUE}</HotIssue>
       <Slider {...settings}>
         {hotIssues.map((issue, index) => (
-          <HotIssueComponent key={index} date={issue.date} text={issue.text} />
+          <HotIssueComponent
+            key={index}
+            date={issue.noticedAt}
+            text={issue.title}
+            link={issue.link}
+          />
         ))}
       </Slider>
     </HotIssueContainer>

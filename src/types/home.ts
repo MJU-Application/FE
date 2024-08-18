@@ -1,6 +1,7 @@
 export interface HotissueProp {
   date: string;
   text: string;
+  link: string;
 }
 
 export interface HomeNoticeCardProp {
@@ -15,7 +16,7 @@ export interface MealCardProp {
 }
 
 export type NoticeType = {
-  type: "일반공지" | "행사공지" | "학사공지";
+  type: string | null;
 };
 
 export interface Notice {

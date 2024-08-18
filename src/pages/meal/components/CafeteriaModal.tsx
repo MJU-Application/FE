@@ -8,9 +8,7 @@ const CafeteriaModal: React.FC<CafeteriaModalProps> = ({ onClick }) => {
     <CafeteriaModalContainer>
       {CAFETERIALIST.map((cafeteria, index) => (
         <div key={index}>
-          <Cafeteria onClick={() => onClick(cafeteria.name)}>
-            {cafeteria.name}
-          </Cafeteria>
+          <Cafeteria onClick={() => onClick(cafeteria)}>{cafeteria}</Cafeteria>
           {index < CAFETERIALIST.length - 1 && <Divider />}
         </div>
       ))}
@@ -22,7 +20,7 @@ export default CafeteriaModal;
 
 const CafeteriaModalContainer = styled.div`
   width: 361px;
-  height: 168px;
+  height: 280px;
   background-color: rgba(229, 229, 229, 0.55);
   border-radius: 11px;
   display: flex;

@@ -5,9 +5,9 @@ import {
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
 
-export function useMainNotice({
-  type,
-}: NoticeType): UseSuspenseQueryResult<NoticeResponse, Error> {
+export function useMainNotice(
+  type: string | null
+): UseSuspenseQueryResult<NoticeResponse, Error> {
   const QUERY_KEY = "HomeMainNotice";
 
   return useSuspenseQuery({

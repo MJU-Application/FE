@@ -104,7 +104,7 @@ const Divider = styled.div`
   margin-top: 10px;
   height: 2px;
   background: #0c0c0c12;
-  width: 70px;
+  width: 100px;
 `;
 
 const Overlay = styled.div`
