@@ -23,6 +23,7 @@ function Home() {
   const type = searchParams.get("category");
   const [cafeteria, setCafeteria] = useState<CafeteriaName>("인문학생회관");
 
+  //쿼리를 바꿀까 생각
   useEffect(() => {
     if (!type) {
       searchParams.set("category", decodeURIComponent("일반공지"));
@@ -30,15 +31,17 @@ function Home() {
     }
   }, [searchParams, setSearchParams, type]);
 
-  const mealData = useMeal({
+  const { data, refetch } = useMeal({
     date: setMealDate(new Date()),
     cafeteria: "인문학생회관",
   });
 
+  useEffect(() => {
+    refetch();
+  }, [cafeteria]);
+
   const mealMenu =
-    mealData.data.data.data.menu.length > 0
-      ? mealData.data.data.data.menu
-      : INITMEALARRAY;
+    data.data.data.menu.length > 0 ? data.data.data.menu : INITMEALARRAY;
 
   const hotIssueData = useHotIssue();
 

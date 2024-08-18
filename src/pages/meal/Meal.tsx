@@ -2,7 +2,7 @@ import Header from "../../components/common/Header";
 import HeaderText from "../../components/common/HeaderText";
 import styled, { keyframes } from "styled-components";
 import HeaderNextButton from "./components/HeaderNextButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMeal } from "../../hooks/api/useMeal";
 import MealCard from "../../components/common/MealCard";
 import { getMealTime } from "../../utils/getMealTime";
@@ -21,19 +21,19 @@ function Meal() {
   const [cafeteria, setCafeteria] = useState<CafeteriaName>("인문학생회관");
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
-  const mealData = useMeal({
+  const { data, refetch } = useMeal({
     date: setMealDate(date),
     cafeteria: cafeteria,
   });
 
+  useEffect(() => {
+    refetch();
+  }, [date, cafeteria]);
+
   // 음식 리스트 포맷
   // * 리스트가 비어있을 시 존재 X 기본 항목으로 초기화
   const mealArray =
-    mealData.data.data.data.menu.length > 0
-      ? mealData.data.data.data.menu
-      : INITMEALARRAY;
-
-  console.log(mealArray);
+    data.data.data.menu.length > 0 ? data.data.data.menu : INITMEALARRAY;
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);

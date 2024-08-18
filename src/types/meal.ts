@@ -27,5 +27,5 @@ export interface MealResponse {
 }
 
 export interface CafeteriaModalProps {
-  onClick: (selectedCafeteria: (typeof CAFETERIALIST)[number]["name"]) => void;
+  onClick: (selectedCafeteria: (typeof CAFETERIALIST)[number]) => void;
 }
