@@ -1,5 +1,5 @@
-import { Dash } from "@/assets/svg";
-import { HomeNoticeCardProp } from "@/types/home";
+import { Dash } from "../../../assets/svg";
+import { HomeNoticeCardProp } from "../../../types/home";
 import { styled } from "styled-components";
 
 const HomeNoticeCard = ({ title, date }: HomeNoticeCardProp) => {

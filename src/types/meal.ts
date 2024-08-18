@@ -1,4 +1,4 @@
-import { CAFETERIALIST } from "@/constants/meal";
+import { CAFETERIALIST } from "../constants/meal";
 
 export type Menu = {
   category: string;

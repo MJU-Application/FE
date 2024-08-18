@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { SearchIcon } from "@/assets/svg";
-import { getColor } from "@/styles/color";
+import { SearchIcon } from "../../assets/svg";
+import { getColor } from "../../styles/color";
 function Header({ isSearchIcon }: { isSearchIcon: boolean }) {
   return (
     <>

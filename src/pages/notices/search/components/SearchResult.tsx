@@ -1,7 +1,7 @@
-import { APINotice } from "@/types/notice";
-import NotcieCard from "@/pages/notices/components/NoticeCard";
+import { APINotice } from "../../../../types/notice";
+import NotcieCard from "../../../../pages/notices/components/NoticeCard";
 import styled from "styled-components";
-import { useSearchNotice } from "@/hooks/api/useSearchNotice";
+import { useSearchNotice } from "../../../../hooks/api/useSearchNotice";
 
 function SearchResult({ title }: { title: string | null }) {
   // const { data } = useSearchNotice({

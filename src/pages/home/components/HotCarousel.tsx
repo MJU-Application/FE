@@ -1,8 +1,8 @@
 import Slider from "react-slick";
-import HotIssueComponent from "@/components/common/HotIssueComponent";
+import HotIssueComponent from "../../../components/common/HotIssueComponent";
 import styled from "styled-components";
-import { HOTISSUE } from "@/constants/homeNotice";
-import { getColor } from "@/styles/color";
+import { HOTISSUE } from "../../../constants/homeNotice";
+import { getColor } from "../../../styles/color";
 const settings = {
   infinite: true,
   speed: 500,

@@ -1,6 +1,6 @@
-import { CAFETERIALIST } from "@/constants/meal";
-import { getColor } from "@/styles/color";
-import { CafeteriaModalProps } from "@/types/meal";
+import { CAFETERIALIST } from "../../../constants/meal";
+import { getColor } from "../../../styles/color";
+import { CafeteriaModalProps } from "../../../types/meal";
 import styled from "styled-components";
 
 const CafeteriaModal: React.FC<CafeteriaModalProps> = ({ onClick }) => {

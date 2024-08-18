@@ -1,19 +1,19 @@
-import HeaderText from "@/components/common/HeaderText";
+import HeaderText from "../../components/common/HeaderText";
 import styled from "styled-components";
 import RestaurantButton from "./components/RestaurantButton";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
-import { useMeal } from "@/hooks/api/useMeal";
-import { getColor } from "@/styles/color";
-import { HOMENOTICE, HOTISSUE } from "@/constants/homeNotice";
-import { setMealDate } from "@/utils/setDate";
-import { INITMEALARRAY } from "@/constants/meal";
-import { useMainNotice } from "@/hooks/api/useMainNotice";
-import Header from "@/components/common/Header";
-import MealCarousel from "@/pages/home/components/MealCarousel";
-import HotCarousel from "@/pages/home/components/HotCarousel";
+import { useMeal } from "../../hooks/api/useMeal";
+import { getColor } from "../../styles/color";
+import { HOMENOTICE, HOTISSUE } from "../../constants/homeNotice";
+import { setMealDate } from "../../utils/setDate";
+import { INITMEALARRAY } from "../../constants/meal";
+import { useMainNotice } from "../../hooks/api/useMainNotice";
+import Header from "../../components/common/Header";
+import MealCarousel from "../../pages/home/components/MealCarousel";
+import HotCarousel from "../../pages/home/components/HotCarousel";
 
 function Home() {
   const hotIssues = [

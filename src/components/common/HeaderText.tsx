@@ -1,4 +1,4 @@
-import { getColor } from "@/styles/color";
+import { getColor } from "../../styles/color";
 import styled from "styled-components";
 
 function HeaderText({ text }: { text: string }) {

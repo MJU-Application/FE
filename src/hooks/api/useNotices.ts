@@ -1,9 +1,9 @@
-import { getNotices } from "@/api/Notice";
+import { getNotices } from "../../api/Notice";
 import {
   UseSuspenseQueryResult,
   useSuspenseQuery,
 } from "@tanstack/react-query";
-import { NoticeResponse } from "@/types/notice";
+import { NoticeResponse } from "../../types/notice";
 
 export function useNotices(
   category: string | null,

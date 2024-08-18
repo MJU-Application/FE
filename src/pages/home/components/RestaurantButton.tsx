@@ -1,6 +1,6 @@
-import { SelectButton } from "@/assets/svg";
-import { MEALOPTIONS } from "@/constants/homeNotice";
-import { getColor } from "@/styles/color";
+import { SelectButton } from "../../../assets/svg";
+import { MEALOPTIONS } from "../../../constants/homeNotice";
+import { getColor } from "../../../styles/color";
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 

@@ -1,16 +1,16 @@
-import Header from "@/components/common/Header";
-import HeaderText from "@/components/common/HeaderText";
+import Header from "../../components/common/Header";
+import HeaderText from "../../components/common/HeaderText";
 import styled, { keyframes } from "styled-components";
 import HeaderNextButton from "./components/HeaderNextButton";
 import { useState } from "react";
-import { useMeal } from "@/hooks/api/useMeal";
-import MealCard from "@/components/common/MealCard";
-import { getMealTime } from "@/utils/getMealTime";
-import { CAFETERIALIST, INITMEALARRAY } from "@/constants/meal";
-import { NextButton } from "@/assets/svg";
-import { getColor } from "@/styles/color";
+import { useMeal } from "../../hooks/api/useMeal";
+import MealCard from "../../components/common/MealCard";
+import { getMealTime } from "../../utils/getMealTime";
+import { CAFETERIALIST, INITMEALARRAY } from "../../constants/meal";
+import { NextButton } from "../../assets/svg";
+import { getColor } from "../../styles/color";
 import CafeteriaModal from "./components/CafeteriaModal";
-import { setMealDate } from "@/utils/setDate";
+import { setMealDate } from "../../utils/setDate";
 
 // 학생식당, 명진당, 생활관 타입만 적용
 type CafeteriaName = (typeof CAFETERIALIST)[number]["name"];

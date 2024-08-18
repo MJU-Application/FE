@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { NAV_MENU } from "@/constants/navigation";
-import { getColor } from "@/styles/color";
+import { NAV_MENU } from "../../constants/navigation";
+import { getColor } from "../../styles/color";
 function BottomNavigation() {
   const location = useLocation();
   if (location.pathname === "/notice/search") {
