@@ -3,7 +3,7 @@ import styled from "styled-components";
 import RestaurantButton from "./components/RestaurantButton";
 import NoticeNav from "./components/NoticeNav";
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeNoticeCard from "./components/HomeNoticeCard";
 import { useMeal } from "../../hooks/api/useMeal";
 import { getColor } from "../../styles/color";
@@ -14,32 +14,34 @@ import { useMainNotice } from "../../hooks/api/useMainNotice";
 import Header from "../../components/common/Header";
 import MealCarousel from "../../pages/home/components/MealCarousel";
 import HotCarousel from "../../pages/home/components/HotCarousel";
+import { useHotIssue } from "../../hooks/api/useHotIssue";
 
 function Home() {
-  const hotIssues = [
-    { date: "2024.07.07", text: "공지사항 제목을 입력해주세요." },
-    { date: "2024.07.08", text: "2024년도 신입생 오리엔테이션 안내" },
-    { date: "2024.07.09", text: "여름 방학 학습 자료 배포" },
-    { date: "2024.07.10", text: "캠퍼스 안전 교육 세미나" },
-    { date: "2024.07.11", text: "장학금 신청 마감 안내" },
-  ];
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const type = searchParams.get("type");
+  const type = searchParams.get("category");
   const [cafeteria, setCafeteria] = useState("학생식당");
+
+  useEffect(() => {
+    if (!type) {
+      searchParams.set("category", decodeURIComponent("일반공지"));
+      setSearchParams(searchParams);
+    }
+  }, [searchParams, setSearchParams, type]);
 
   const mealData = useMeal({
     date: setMealDate(new Date()),
     cafeteria: "인문캠퍼스 학생회관 식당",
   });
 
-  // const homeNoticeData = useMainNotice({ type: "일반공지" });
-  // console.log(homeNoticeData);
-
   const mealMenu =
     mealData.data.data.data.menu.length > 0
       ? mealData.data.data.data.menu
       : INITMEALARRAY;
+
+  const hotIssueData = useHotIssue();
+
+  const noticeData = useMainNotice(type);
+  console.log(noticeData.data.data.content);
 
   return (
     <>
@@ -50,14 +52,14 @@ function Home() {
           <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
         </HomeHeader>
         <MealCarousel mealMenu={mealMenu} />
-        <HotCarousel hotIssues={hotIssues} />
+        <HotCarousel hotIssues={hotIssueData.data.data.content} />
         <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
         <NoticeWrapper>
-          {hotIssues.map((notice, index) => (
+          {noticeData.data.data.content.map((notice, index) => (
             <HomeNoticeCard
               key={index}
-              title={notice.text}
-              date={notice.date}
+              title={notice.title}
+              date={notice.noticedAt}
             />
           ))}
         </NoticeWrapper>

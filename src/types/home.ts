@@ -15,7 +15,7 @@ export interface MealCardProp {
 }
 
 export type NoticeType = {
-  type: "일반공지" | "행사공지" | "학사공지";
+  type: string | null;
 };
 
 export interface Notice {

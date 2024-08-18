@@ -8,18 +8,16 @@ import {
 export function useSearchNotice({
   page,
   size,
-  category,
   title,
 }: {
   page: number;
   size: number;
-  category: string;
   title: string | null;
 }): UseSuspenseQueryResult<NoticeResponse, Error> {
   const QUERY_KEY = "Notice";
   return useSuspenseQuery({
     queryKey: [QUERY_KEY, title],
-    queryFn: () => (title ? searchNotice(page, size, category, title) : null),
+    queryFn: () => (title ? searchNotice(page, size, title) : null),
   });
 }
 

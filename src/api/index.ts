@@ -37,3 +37,9 @@ export const searchNoticeApi = axios.create({
     "https://7phscebpuxusoffphqhdanyk5q0ycpwn.lambda-url.ap-northeast-2.on.aws",
   timeout: 2000,
 });
+
+export const hotIssueApi = axios.create({
+  baseURL:
+    "https://isdam547nizk7am7yxkltjfzbq0gpwfq.lambda-url.ap-northeast-2.on.aws/",
+  timeout: 2000,
+});

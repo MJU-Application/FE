@@ -10,15 +10,13 @@ import { APINotice } from "../../types/notice";
 function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
-  // const { data } = useNotices(type, 0, 10);
+  const { data, isLoading, fetchNextPage, hasNextPage } = useNotices(type, 0);
   useEffect(() => {
     if (!type) {
-      searchParams.set("type", encodeURIComponent("ILLBAN"));
+      searchParams.set("type", decodeURIComponent("일반공지"));
       setSearchParams(searchParams);
     }
   }, [searchParams, setSearchParams, type]);
-
-  console.log();
 
   return (
     <>
@@ -27,12 +25,12 @@ function Notices() {
         <Menu type={type} />
       </TopNavigation>
       {/* <NoticeWrapper>
-        {data.data.map((notice: APINotice) => (
+        {noticeArray.map((notice: APINotice) => (
           <NotcieCard
             title={notice.title}
             date={notice.noticedAt}
             link={notice.link}
-            key={notice.id}
+            key={notice.notice_id}
           />
         ))}
       </NoticeWrapper> */}
