@@ -1,4 +1,4 @@
-import { getHotIssue } from "@api/Home";
+import { getHotIssue } from "../../api/Home";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 export function useHotIssue() {
