@@ -10,22 +10,24 @@ import { APINotice } from "../../types/notice";
 function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("type");
-  const { data, isLoading, fetchNextPage, hasNextPage } = useNotices(type, 0);
+  const { data, isLoading, fetchNextPage, hasNextPage } = useNotices(type, 10);
+  console.log(data?.pages[0].data.data.notices);
+  const noticeArray = data?.pages[0].data.data.notices;
+
   useEffect(() => {
     if (!type) {
       searchParams.set("type", decodeURIComponent("일반공지"));
       setSearchParams(searchParams);
     }
   }, [searchParams, setSearchParams, type]);
-
   return (
     <>
       <TopNavigation>
         <Header isSearchIcon={true} />
         <Menu type={type} />
       </TopNavigation>
-      {/* <NoticeWrapper>
-        {noticeArray.map((notice: APINotice) => (
+      <NoticeWrapper>
+        {noticeArray?.map((notice: APINotice) => (
           <NotcieCard
             title={notice.title}
             date={notice.noticedAt}
@@ -33,7 +35,7 @@ function Notices() {
             key={notice.notice_id}
           />
         ))}
-      </NoticeWrapper> */}
+      </NoticeWrapper>
     </>
   );
 }

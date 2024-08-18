@@ -21,6 +21,7 @@ export interface Pagination {
 }
 
 export interface Notices {
+  nextCursor: any;
   notices: APINotice[];
   pagination: Pagination;
 }
@@ -31,8 +32,8 @@ export interface NoticeData {
 }
 
 export interface NoticeResponse {
+  nextPageToken: any;
   notices: any;
-  nextCursor: any;
   data: NoticeData;
   pagination: Page;
 }
