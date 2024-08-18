@@ -22,6 +22,7 @@ function HotCarousel({ hotIssues }: { hotIssues: Notice[] }) {
             key={index}
             date={issue.noticedAt}
             text={issue.title}
+            link={issue.link}
           />
         ))}
       </Slider>

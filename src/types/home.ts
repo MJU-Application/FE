@@ -1,6 +1,7 @@
 export interface HotissueProp {
   date: string;
   text: string;
+  link: string;
 }
 
 export interface HomeNoticeCardProp {

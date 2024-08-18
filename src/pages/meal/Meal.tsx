@@ -11,18 +11,19 @@ import { NextButton } from "../../assets/svg";
 import { getColor } from "../../styles/color";
 import CafeteriaModal from "./components/CafeteriaModal";
 import { setMealDate } from "../../utils/setDate";
+import { render } from "react-dom";
 
 // 학생식당, 명진당, 생활관 타입만 적용
-type CafeteriaName = (typeof CAFETERIALIST)[number]["name"];
+type CafeteriaName = (typeof CAFETERIALIST)[number];
 
 function Meal() {
   const [date, setDate] = useState<Date>(new Date());
-  const [cafeteria, setCafeteria] = useState<CafeteriaName>("명진당");
+  const [cafeteria, setCafeteria] = useState<CafeteriaName>("인문학생회관");
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const mealData = useMeal({
     date: setMealDate(date),
-    cafeteria: "인문캠퍼스 학생회관 식당",
+    cafeteria: cafeteria,
   });
 
   // 음식 리스트 포맷
@@ -31,6 +32,8 @@ function Meal() {
     mealData.data.data.data.menu.length > 0
       ? mealData.data.data.data.menu
       : INITMEALARRAY;
+
+  console.log(mealArray);
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);
@@ -69,8 +72,7 @@ function Meal() {
           ))}
         </MealCardContainer>
       </MealContainer>
-      {/* 인문캠퍼스밖에 적용 안 되는 것으로 확인 추후 수정 */}
-      {/* <SelectCafeteria onClick={handleOpenModal}>
+      <SelectCafeteria onClick={handleOpenModal}>
         {cafeteria}
         <NextButton
           stroke={getColor()}
@@ -86,7 +88,7 @@ function Meal() {
             <CafeteriaModal onClick={handleSetCafeteria} />
           </ModalContainer>
         </>
-      )} */}
+      )}
     </>
   );
 }
@@ -128,7 +130,7 @@ const SelectCafeteria = styled.div`
   font-weight: 600;
   line-height: normal;
   gap: 9px;
-  margin-top: 24px;
+  margin-top: 48px;
 `;
 
 const Overlay = styled.div`
@@ -147,7 +149,7 @@ const Overlay = styled.div`
 
 const ModalContainer = styled.div`
   position: absolute;
-  bottom: 120px;
+  bottom: 220px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

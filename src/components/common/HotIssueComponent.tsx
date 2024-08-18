@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 import { getColor } from "../../styles/color";
 import { HotissueProp } from "../../types/home";
 import { mixColors } from "../../utils/mixColors";
 import { styled } from "styled-components";
 
-const HotIssueComponent = ({ date, text }: HotissueProp) => {
+const HotIssueComponent = ({ date, text, link }: HotissueProp) => {
   return (
-    <HotIssueContainer>
-      <Date>{date}</Date>
-      <Text>{text}</Text>
-    </HotIssueContainer>
+    <Link to={link}>
+      <HotIssueContainer>
+        <Date>{date}</Date>
+        <Text>{text}</Text>
+      </HotIssueContainer>
+    </Link>
   );
 };
 

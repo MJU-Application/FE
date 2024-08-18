@@ -9,17 +9,19 @@ import { useMeal } from "../../hooks/api/useMeal";
 import { getColor } from "../../styles/color";
 import { HOMENOTICE, HOTISSUE } from "../../constants/homeNotice";
 import { setMealDate } from "../../utils/setDate";
-import { INITMEALARRAY } from "../../constants/meal";
+import { CAFETERIALIST, INITMEALARRAY } from "../../constants/meal";
 import { useMainNotice } from "../../hooks/api/useMainNotice";
 import Header from "../../components/common/Header";
 import MealCarousel from "../../pages/home/components/MealCarousel";
 import HotCarousel from "../../pages/home/components/HotCarousel";
 import { useHotIssue } from "../../hooks/api/useHotIssue";
 
+type CafeteriaName = (typeof CAFETERIALIST)[number];
+
 function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const type = searchParams.get("category");
-  const [cafeteria, setCafeteria] = useState("학생식당");
+  const [cafeteria, setCafeteria] = useState<CafeteriaName>("인문학생회관");
 
   useEffect(() => {
     if (!type) {
@@ -30,7 +32,7 @@ function Home() {
 
   const mealData = useMeal({
     date: setMealDate(new Date()),
-    cafeteria: "인문캠퍼스 학생회관 식당",
+    cafeteria: "인문학생회관",
   });
 
   const mealMenu =
@@ -41,14 +43,13 @@ function Home() {
   const hotIssueData = useHotIssue();
 
   const noticeData = useMainNotice(type);
-  console.log(noticeData.data.data.content);
 
   return (
     <>
       <Header isSearchIcon={true} />
       <HomeContainer>
         <HomeHeader>
-          <HeaderText text="오늘의 식단" />
+          <HeaderText text={"오늘의 식단"} />
           <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
         </HomeHeader>
         <MealCarousel mealMenu={mealMenu} />

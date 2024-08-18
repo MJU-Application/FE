@@ -1,7 +1,9 @@
 export const CAFETERIALIST = [
-  { name: "학생식당", query: "HAKSANGSICKDANG" },
-  { name: "생활관", query: "SNAGHOALKOAN" },
-  { name: "명진당", query: "MYEONGJINDANG" },
+  "인문학생회관",
+  "자연명진당",
+  "자연학생회관",
+  "자연생활관",
+  "자연교직원",
 ];
 
 export const INITMEALARRAY = [
