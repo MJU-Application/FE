@@ -6,7 +6,7 @@ function Header({ isSearchIcon }: { isSearchIcon: boolean }) {
   return (
     <>
       <Head>
-        <div className="logo">로고</div>
+        <div className={isSearchIcon ? "logo" : "xLogo"}>로고</div>
         {isSearchIcon && (
           <Link to={"search"} className="searchIcon">
             <SearchIcon width={22} height={22} stroke={getColor()} />
@@ -25,6 +25,12 @@ const Head = styled.div`
     font-size: 15px;
     font-weight: 600;
     padding: 0 1rem;
+  }
+  .xLogo {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0 1rem;
+    padding: 5px 10px;
   }
   .searchIcon {
     margin-left: auto;

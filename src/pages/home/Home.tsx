@@ -49,7 +49,7 @@ function Home() {
 
   return (
     <>
-      <Header isSearchIcon={true} />
+      <Header isSearchIcon={false} />
       <HomeContainer>
         <HomeHeader>
           <HeaderText text={"오늘의 식단"} />

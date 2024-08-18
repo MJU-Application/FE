@@ -30,7 +30,7 @@ function Schedule() {
 
   return (
     <>
-      <Header isSearchIcon={true} />
+      <Header isSearchIcon={false} />
       <ScheduleContainer>
         <ScheduleHeader>
           <HeaderText text={"학사일정"} />

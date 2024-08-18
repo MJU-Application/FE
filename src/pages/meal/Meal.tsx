@@ -54,7 +54,7 @@ function Meal() {
 
   return (
     <>
-      <Header isSearchIcon={true} />
+      <Header isSearchIcon={false} />
       <MealContainer>
         <div className="header">
           <HeaderText text="오늘의 띵식" />
