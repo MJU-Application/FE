@@ -1,6 +1,6 @@
-import { getColor } from "@/styles/color";
-import { HotissueProp } from "@/types/home";
-import { mixColors } from "@/utils/mixColors";
+import { getColor } from "../../styles/color";
+import { HotissueProp } from "../../types/home";
+import { mixColors } from "../../utils/mixColors";
 import { styled } from "styled-components";
 
 const HotIssueComponent = ({ date, text }: HotissueProp) => {

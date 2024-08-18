@@ -1,7 +1,7 @@
-import { NextButton } from "@/assets/svg";
-import { getColor } from "@/styles/color";
-import { HeaderNextButtonProps } from "@/types/schedule";
-import { setMealHeaderDate } from "@/utils/setDate";
+import { NextButton } from "../../../assets/svg";
+import { getColor } from "../../../styles/color";
+import { HeaderNextButtonProps } from "../../../types/schedule";
+import { setMealHeaderDate } from "../../../utils/setDate";
 import styled from "styled-components";
 
 const HeaderNextButton = ({

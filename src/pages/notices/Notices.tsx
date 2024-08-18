@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import NotcieCard from "@/pages/notices/components/NoticeCard";
-import { useNotices } from "@/hooks/api/useNotices";
-import Menu from "@/pages/notices/components/Menu";
-import Header from "@/components/common/Header";
+import NotcieCard from "../../pages/notices/components/NoticeCard";
+import { useNotices } from "../../hooks/api/useNotices";
+import Menu from "../../pages/notices/components/Menu";
+import Header from "../../components/common/Header";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
-import { APINotice } from "@/types/notice";
+import { APINotice } from "../../types/notice";
 
 function Notices() {
   const [searchParams, setSearchParams] = useSearchParams();

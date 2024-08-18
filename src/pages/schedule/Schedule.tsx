@@ -1,10 +1,10 @@
-import HeaderText from "@/components/common/HeaderText";
+import HeaderText from "../../components/common/HeaderText";
 import styled from "styled-components";
 import ScheduleCard from "./components/ScheduleCard";
-import { useSchedule } from "@/hooks/api/useSchedule";
+import { useSchedule } from "../../hooks/api/useSchedule";
 import HeaderNextButton from "./components/HeaderNextButton";
 import { useState, useEffect } from "react";
-import Header from "@/components/common/Header";
+import Header from "../../components/common/Header";
 
 function Schedule() {
   const [date, setDate] = useState<Date>(new Date());

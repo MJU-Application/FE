@@ -1,7 +1,7 @@
-import { Menu } from "@/types/meal";
+import { Menu } from "../../../types/meal";
 import Slider from "react-slick";
-import MealCard from "@/components/common/MealCard";
-import { getMealTime } from "@/utils/getMealTime";
+import MealCard from "../../../components/common/MealCard";
+import { getMealTime } from "../../../utils/getMealTime";
 const settings = {
   dots: true,
   infinite: true,

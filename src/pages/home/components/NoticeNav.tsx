@@ -1,6 +1,6 @@
-import { EllipseButton } from "@/assets/svg";
-import { HOMENOTICE } from "@/constants/homeNotice";
-import { getColor } from "@/styles/color";
+import { EllipseButton } from "../../../assets/svg";
+import { HOMENOTICE } from "../../../constants/homeNotice";
+import { getColor } from "../../../styles/color";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 

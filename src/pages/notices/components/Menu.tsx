@@ -1,5 +1,5 @@
-import { NOTICE } from "@/constants/notice";
-import { getColor } from "@/styles/color";
+import { NOTICE } from "../../../constants/notice";
+import { getColor } from "../../../styles/color";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 

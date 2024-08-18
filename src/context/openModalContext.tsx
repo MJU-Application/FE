@@ -1,4 +1,4 @@
-import { ModalProviderProps } from "@/types/setting";
+import { ModalProviderProps } from "../types/setting";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface ModalContextType {

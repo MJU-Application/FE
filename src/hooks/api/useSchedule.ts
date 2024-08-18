@@ -1,9 +1,9 @@
-import { getSchedule } from "@/api/Schedule";
+import { getSchedule } from "../../api/Schedule";
 import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { SchedulesResponse } from "@/types/schedule";
+import { SchedulesResponse } from "../../types/schedule";
 
 export function useSchedule({
   year,

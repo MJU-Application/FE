@@ -1,5 +1,5 @@
-import { scheduleApi } from "@/api";
-import { APISchedules } from "@/types/schedule";
+import { scheduleApi } from "../api";
+import { APISchedules } from "../types/schedule";
 
 export async function getSchedule({
   year,

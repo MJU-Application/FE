@@ -1,6 +1,6 @@
-import { ScheduleEllipse } from "@/assets/svg";
-import { getColor } from "@/styles/color";
-import { Schedule } from "@/types/schedule";
+import { ScheduleEllipse } from "../../../assets/svg";
+import { getColor } from "../../../styles/color";
+import { Schedule } from "../../../types/schedule";
 import styled from "styled-components";
 
 const ScheduleCard = ({ period, contents }: Schedule) => {

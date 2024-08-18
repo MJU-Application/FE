@@ -1,7 +1,7 @@
-import Header from "@/components/common/Header";
-import HeaderText from "@/components/common/HeaderText";
-import { SETTINGITEMS } from "@/constants/setting";
-import { getColor } from "@/styles/color";
+import Header from "../../components/common/Header";
+import HeaderText from "../../components/common/HeaderText";
+import { SETTINGITEMS } from "../../constants/setting";
+import { getColor } from "../../styles/color";
 import styled from "styled-components";
 
 function Setting() {

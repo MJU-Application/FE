@@ -1,5 +1,5 @@
-import api, { noticeApi, searchNoticeApi } from "@/api";
-import { APINotice } from "@/types/notice";
+import api, { noticeApi, searchNoticeApi } from "../api";
+import { APINotice } from "../types/notice";
 
 export async function getNotices(
   page: number,

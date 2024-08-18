@@ -1,5 +1,5 @@
-import { searchNotice } from "@/api/Notice";
-import { NoticeResponse } from "@/types/notice";
+import { searchNotice } from "../../api/Notice";
+import { NoticeResponse } from "../../types/notice";
 import {
   useSuspenseQuery,
   UseSuspenseQueryResult,

@@ -1,8 +1,8 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import GlobalStyles from "@/styles/GlobalStyle";
-import BottomNavigation from "@components/common/BottomNavigation";
+import GlobalStyles from "./styles/GlobalStyle";
+import BottomNavigation from "./components/common/BottomNavigation";
 import styled from "styled-components";
 
 function App() {
@@ -15,13 +15,13 @@ function App() {
       },
     },
   });
-  const Home = lazy(() => import("@pages/home/Home"));
-  const Notices = lazy(() => import("@pages/notices/Notices"));
-  const Search = lazy(() => import("@pages/notices/search/Search"));
-  const Meal = lazy(() => import("@pages/meal/Meal"));
-  const Schedule = lazy(() => import("@pages/schedule/Schedule"));
-  const Setting = lazy(() => import("@pages/setting/Setting"));
-  const NotFound = lazy(() => import("@pages/error/NotFound"));
+  const Home = lazy(() => import("./pages/home/Home"));
+  const Notices = lazy(() => import("./pages/notices/Notices"));
+  const Search = lazy(() => import("./pages/notices/search/Search"));
+  const Meal = lazy(() => import("./pages/meal/Meal"));
+  const Schedule = lazy(() => import("./pages/schedule/Schedule"));
+  const Setting = lazy(() => import("./pages/setting/Setting"));
+  const NotFound = lazy(() => import("./pages/error/NotFound"));
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

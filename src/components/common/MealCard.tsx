@@ -1,6 +1,6 @@
-import mealComponentUrl from "@/assets/svg/mealComponent.svg";
-import mealComponentEmptyUrl from "@assets/svg/mealComponentEmpty.svg";
-import { MealCardProp } from "@/types/home";
+import mealComponentUrl from "../../assets/svg/mealComponent.svg";
+import mealComponentEmptyUrl from "../../assets/svg/mealComponentEmpty.svg";
+import { MealCardProp } from "../../types/home";
 import styled from "styled-components";
 
 const MealCard = ({ category, time, mealMenus }: MealCardProp) => {

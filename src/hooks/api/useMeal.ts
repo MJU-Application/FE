@@ -1,9 +1,9 @@
-import { getMeal } from "@/api/Meal";
+import { getMeal } from "../../api/Meal";
 import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
 } from "@tanstack/react-query";
-import { MealResponse, Meal } from "@/types/meal";
+import { MealResponse, Meal } from "../../types/meal";
 
 export function useMeal({
   date,

@@ -1,8 +1,8 @@
 import { useState, useEffect, Suspense } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import { SearchIcon } from "@/assets/svg";
-import SearhResult from "@/pages/notices/search/components/SearchResult";
+import { SearchIcon } from "../../../assets/svg";
+import SearhResult from "../../../pages/notices/search/components/SearchResult";
 function Search() {
   const [value, setValue] = useState<string>("");
   const [searchParams, setSearchParams] = useSearchParams();

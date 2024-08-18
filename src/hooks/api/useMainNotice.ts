@@ -1,5 +1,5 @@
-import { getMainNotice } from "@/api/Home";
-import { NoticeResponse, NoticeType } from "@/types/home";
+import { getMainNotice } from "../../api/Home";
+import { NoticeResponse, NoticeType } from "../../types/home";
 import {
   useSuspenseQuery,
   UseSuspenseQueryResult,
