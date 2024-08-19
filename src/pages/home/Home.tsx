@@ -85,6 +85,7 @@ const HomeContainer = styled.div`
   max-width: 480px;
   background-color: #fcfcfc;
   padding: 0 24px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 `;

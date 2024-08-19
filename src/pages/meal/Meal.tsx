@@ -58,40 +58,45 @@ function Meal() {
   return (
     <>
       <Header isSearchIcon={false} />
-      <MealContainer>
-        <div className="header">
-          <HeaderText text="오늘의 띵식" />
-          <HeaderNextButton date={date} handleChangeMonth={handleChangeMonth} />
-        </div>
-
-        <MealCardContainer>
-          {updatedMenu.map((meal) => (
-            <MealCard
-              key={meal.category}
-              category={meal.category}
-              time={getMealTime(meal.category)}
-              mealMenus={meal.food}
+      <MealMainContainer>
+        <MealContainer>
+          <div className="header">
+            <HeaderText text="오늘의 띵식" />
+            <HeaderNextButton
+              date={date}
+              handleChangeMonth={handleChangeMonth}
             />
-          ))}
-        </MealCardContainer>
-      </MealContainer>
-      <SelectCafeteria onClick={handleOpenModal}>
-        {cafeteria}
-        <NextButton
-          stroke={getColor()}
-          style={{
-            transform: `rotate(${isOpenModal ? 270 : 90}deg) scale(0.7)`,
-          }}
-        />
-      </SelectCafeteria>
-      {isOpenModal && (
-        <>
-          <Overlay onClick={handleOpenModal} />
-          <ModalContainer>
-            <CafeteriaModal onClick={handleSetCafeteria} />
-          </ModalContainer>
-        </>
-      )}
+          </div>
+
+          <MealCardContainer>
+            {updatedMenu.map((meal) => (
+              <MealCard
+                key={meal.category}
+                category={meal.category}
+                time={getMealTime(meal.category)}
+                mealMenus={meal.food}
+              />
+            ))}
+          </MealCardContainer>
+        </MealContainer>
+        <SelectCafeteria onClick={handleOpenModal}>
+          {cafeteria}
+          <NextButton
+            stroke={getColor()}
+            style={{
+              transform: `rotate(${isOpenModal ? 270 : 90}deg) scale(0.7)`,
+            }}
+          />
+        </SelectCafeteria>
+        {isOpenModal && (
+          <>
+            <Overlay onClick={handleOpenModal} />
+            <ModalContainer>
+              <CafeteriaModal onClick={handleSetCafeteria} />
+            </ModalContainer>
+          </>
+        )}
+      </MealMainContainer>
     </>
   );
 }
@@ -107,6 +112,10 @@ const fadeIn = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
+`;
+
+const MealMainContainer = styled.div`
+  height: 100vh;
 `;
 
 const MealContainer = styled.div`
