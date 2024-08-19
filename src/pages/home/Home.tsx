@@ -15,6 +15,7 @@ import Header from "../../components/common/Header";
 import MealCarousel from "../../pages/home/components/MealCarousel";
 import HotCarousel from "../../pages/home/components/HotCarousel";
 import { useHotIssue } from "../../hooks/api/useHotIssue";
+import { fillMissingMeals } from "../../utils/fillMissingMeals";
 
 type CafeteriaName = (typeof CAFETERIALIST)[number];
 
@@ -33,7 +34,7 @@ function Home() {
 
   const { data, refetch } = useMeal({
     date: setMealDate(new Date()),
-    cafeteria: "인문학생회관",
+    cafeteria: cafeteria,
   });
 
   useEffect(() => {
@@ -43,9 +44,14 @@ function Home() {
   const mealMenu =
     data.data.data.menu.length > 0 ? data.data.data.menu : INITMEALARRAY;
 
+  const updatedMenu = fillMissingMeals(mealMenu);
+
   const hotIssueData = useHotIssue();
 
   const noticeData = useMainNotice(type);
+  const handleChangeCafeteria = (cafeteria: string) => {
+    setCafeteria(cafeteria);
+  };
 
   return (
     <>
@@ -53,9 +59,12 @@ function Home() {
       <HomeContainer>
         <HomeHeader>
           <HeaderText text={"오늘의 식단"} />
-          <RestaurantButton cafeteria={cafeteria} setCafeteria={setCafeteria} />
+          <RestaurantButton
+            cafeteria={cafeteria}
+            setCafeteria={handleChangeCafeteria}
+          />
         </HomeHeader>
-        <MealCarousel mealMenu={mealMenu} />
+        <MealCarousel mealMenu={updatedMenu} />
         <HotCarousel hotIssues={hotIssueData.data.data.content} />
         <NoticeNav type={type === null ? HOMENOTICE[0].query : type} />
         <NoticeWrapper>

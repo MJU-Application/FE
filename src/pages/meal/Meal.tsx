@@ -12,6 +12,7 @@ import { getColor } from "../../styles/color";
 import CafeteriaModal from "./components/CafeteriaModal";
 import { setMealDate } from "../../utils/setDate";
 import { render } from "react-dom";
+import { fillMissingMeals } from "../../utils/fillMissingMeals";
 
 // 학생식당, 명진당, 생활관 타입만 적용
 type CafeteriaName = (typeof CAFETERIALIST)[number];
@@ -34,6 +35,8 @@ function Meal() {
   // * 리스트가 비어있을 시 존재 X 기본 항목으로 초기화
   const mealArray =
     data.data.data.menu.length > 0 ? data.data.data.menu : INITMEALARRAY;
+
+  const updatedMenu = fillMissingMeals(mealArray);
 
   const handleChangeMonth = (direction: "next" | "previous") => {
     const newDate = new Date(date);
@@ -62,7 +65,7 @@ function Meal() {
         </div>
 
         <MealCardContainer>
-          {mealArray.map((meal) => (
+          {updatedMenu.map((meal) => (
             <MealCard
               key={meal.category}
               category={meal.category}
