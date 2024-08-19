@@ -8,6 +8,7 @@ import NextButton from "./nextButton.svg?react";
 import ScheduleEllipse from "./scheduleEllipse.svg?react";
 import Alarm from "./alarm.svg?react";
 import MealComponentEmpty from "./mealComponentEmpty.svg?react";
+import Logo from "./Logo.svg?react";
 
 export { SearchIcon };
 export { SelectButton };
@@ -18,3 +19,4 @@ export { NextButton };
 export { ScheduleEllipse };
 export { Alarm };
 export { MealComponentEmpty };
+export { Logo };
